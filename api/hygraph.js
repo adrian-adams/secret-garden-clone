@@ -3,7 +3,7 @@ export async function fetchHygraph(query) {
     const graphcms_token = process.env.GRAPHCMS_TOKEN;    
 
     try {
-        const res = await fetch(graphcms_endpoint, {
+        const response = await fetch(graphcms_endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ export async function fetchHygraph(query) {
             next: { revalidate: 60 },
         });
 
-        const json = await res.json();
+        const json = await response.json();
         console.log("Status: ", json);
         return json.data;
 
