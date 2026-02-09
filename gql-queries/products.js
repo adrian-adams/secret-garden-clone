@@ -1,4 +1,4 @@
-const productQuery = `query MyQuery {
+const productQuery = `query ProductsQuery {
   products {
     color
     deliveryRange

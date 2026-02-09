@@ -54,8 +54,10 @@
 } */
 
 :root {
-  --sg-green: #0f352e;
-  --sg-olive: #d4e3d3;
+  --sg-green: hsl(169, 56%, 13%);
+  --sg-olive: hsl(116, 22%, 86%);
+  --sg-lightgreen: hsl(52, 45%, 90%);
+  --sg-locator: hsl(55, 37%, 93%);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -134,22 +136,45 @@
   }
 
   section:not(:first-child) {
-    @apply px-6 md:w-10/12 mx-auto;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    /* @apply font-bold; */ 
+    @apply px-6 w-full lg:w-10/12 mx-auto;
   }
 
   h2 {
     @apply font-medium;
     font-size: clamp(2rem, 5vw, 3rem);
-
   }
 
-  p {
+  /* p {
     font-size: clamp(0.75rem, 5vw, 2rem);
+  } */
+}
+
+@layer utilities {
+  .sg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 
-  
+  .sg-font {
+    p {
+      font-size: clamp(0.75rem, 5vw, 2rem);
+    }
+  }
+
+  /* .sg-store-locator {
+    & p, li {
+      font-size: clamp(0.65rem, 5vw, 1.1rem) !important;
+    }
+
+    .sg-store-announcement {
+      @apply backdrop-blur-xl;
+    }
+
+    .sg-store-background {
+      background: hsla(var(--sg-olive), 0.8);
+    }
+  } */
 }
+
+

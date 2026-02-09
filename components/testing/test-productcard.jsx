@@ -16,7 +16,7 @@ import Image from "next/image";
 //   }
 // }`;
 
-export default async function ProductCard() {
+export default async function TestProductCard() {
     const data = await fetchHygraph(testProductsQuery);
 
     return (
