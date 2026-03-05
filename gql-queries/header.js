@@ -1,6 +1,6 @@
 const header = `query HeaderQuery {
   headers {
-    desktop(first: 1) {
+    desktop {
       fileName
       id
       url(transformation: {image: {quality: {value: 100}}})

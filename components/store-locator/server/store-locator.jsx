@@ -1,16 +1,10 @@
-// React
-import React from 'react'
-
-// NextJS
-
 // API
 import { fetchHygraph } from '@/api/hygraph';
-
 // Query
 import { storeQuery } from '@/gql-queries/stores';
 
 // Components
-import Stores from '@/components/store-locator/stores'
+import Stores from '@/components/store-locator/client/stores'
 
 export default async function StoreLocator() {
     const storeData = await fetchHygraph(storeQuery);

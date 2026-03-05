@@ -1,0 +1,397 @@
+/*
+Theme Name: No Man Recipes
+Theme URI: http://localhost
+Author: Adrian Adams
+Description: Custom Recipe site theme
+Version: 1.0
+*/
+
+/*_____________RESET_____________*/
+
+:root {
+    --background-col:  #d69553;
+    --font-col-primary: #000000;
+    --content-width: 1170px;
+    --recipe-details-width: 18px;
+    --recipe-details-height: 20px;
+    --recipe-details-m-right: 10px;
+    --recipe-details-contain: contain;
+    --recipe-details-display: inline-block;
+    --recipe-details-align: bottom;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1rem;
+}
+
+/*_____________GENERAL_____________*/
+
+html, body {
+    font-family: "Roboto", sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main.main-load {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    margin: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* h2, h3, h4, h5, h6 {
+    text-align: center;
+} */
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+section {
+    padding: 10px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+/* .flex-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+}
+
+.flex-banner img {
+    flex-basis: 50%;
+} */
+
+/*_____________CUSTOM/CT UTILITY_____________*/
+
+.ct_flex_banner_2_col {
+    display: flex;
+    flex-direction: row;
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 10px 10px 0px 10px;
+}
+
+.ct_banner_400 {
+    height: 400;
+    max-height: 100%;
+}
+
+.ct_img_grid figure {
+    transform: translateY(0px);
+    transition: 0.5s ease-in-out;
+    width: clamp(100px, 10vw, 200px);
+    flex: 0 0 auto;
+    margin-bottom: 0;
+}
+
+.ct_img_grid figure:hover {
+    transform: translateY(-10px);
+    transition: 0.5s ease-in-out;
+}
+
+
+
+/*_____________NAVIGATION_____________*/
+
+.nav-height {
+    height: 75px;
+    width: 75px;
+}
+
+.nav-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5em !important;
+    padding-bottom: 0px !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.15s ease;
+}
+
+.nav-link:hover::after {
+    color: #000000;
+    transform: scaleX(1);
+}
+
+.nav-item {
+    text-align: center;
+}
+
+.menu-toggle {
+    width: 100%;
+    display: none;
+    font-size: 2rem;
+    background: #000000;
+    border: none;
+    color: #000000;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*_____________HOMEPAGE HEADER_____________*/
+
+
+
+/*_____________RECIPES_____________*/
+
+.card {
+    transform: translateY(0px);
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.5s ease-in-out;
+}
+
+.ct_recipe_card_btn {
+    background-color: var(--background-col);
+    color: #000000;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 150px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #000000;
+    margin-bottom: 20px;
+}
+
+.ct_recipe_card_btn:hover {
+    text-decoration: underline;
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid var(--background-col);
+    max-width: 200px;
+    transition: 0.35s ease;
+}
+
+.ct_recipe_card_btn:active {
+    background-color: #787878;
+}
+
+.prep-time::before {
+    content: '';
+    display: var(--recipe-details-display);
+    background: url('http://localhost:10004/wp-content/uploads/2025/06/prep-time.svg') no-repeat center center;
+    background-size: contain;
+    width: var(--recipe-details-width);
+    height: var(--recipe-details-height);
+    margin-right: var(--recipe-details-m-right);
+    vertical-align: var(--recipe-details-align);
+}
+
+.cook-time::before {
+    content: '';
+    display: var(--recipe-details-display);
+    background: url('http://localhost:10004/wp-content/uploads/2025/06/cook-time.svg') no-repeat center center;
+    background-size: contain;
+    width: var(--recipe-details-width);
+    height: var(--recipe-details-height);
+    margin-right: var(--recipe-details-m-right);
+    vertical-align: var(--recipe-details-align);
+}
+
+.serves::before {
+    content: '';
+    display: var(--recipe-details-display);
+    background: url('http://localhost:10004/wp-content/uploads/2025/06/serving.svg') no-repeat center center;
+    background-size: contain;
+    width: var(--recipe-details-width);
+    height: var(--recipe-details-height);
+    margin-right: var(--recipe-details-m-right);
+    vertical-align: var(--recipe-details-align);
+}
+
+.ct_recipe_i_m {
+    background-color: #ffffff;
+    color: var(--background-col);
+    border-radius: 10px;
+    border-bottom: 5px solid #000000;
+    padding: 20px;
+    text-align: left;
+}
+
+/* .recipe-list {
+    list-style-type: none;
+    padding: 0px;
+    color: #000000;
+} */
+
+/* .recipe-list li {
+    padding: 5px 0px;
+} */
+
+.recipe-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.recipe-details li {
+    border-bottom: 2px solid #000000;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: end;
+}
+
+.transform-text {
+    text-transform: lowercase;
+}
+
+/*_____________BLOG POSTS_____________*/
+
+/*_____________FOOTER_____________*/
+
+
+/* footer {
+    width: 100%;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #000000;
+    z-index: 9999;
+} */
+
+.footer-container {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: auto;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer-socials ul {
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.footer-socials a {
+    cursor: pointer;
+    
+}
+
+.footer-socials img {
+    width: 30px;
+    height: auto;
+}
+
+.footer-socials img:hover {
+    transform: scale(1.2);
+    transition: 0.25s ease;
+}
+
+@media screen and (max-width: 1120px) {
+    .flex-banner img {
+        flex-basis: 30%;
+    }
+
+    .recipe-page-text {
+        flex: 1 1 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+    
+    .flex-header {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .flex-banner {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .header-400 {
+        height: 100%;
+        padding: 20px;
+    }
+
+    .recipe-page-banner {
+        flex-direction: column;
+        text-align: center;
+        border-radius: 0;
+        margin: 0 auto;
+    }
+
+    .recipe-page-body {
+        flex-direction: column;
+    }
+
+    /* .recipe-page-body section:nth-child(1) {
+        border-bottom: 2px solid #000000;
+        margin-bottom: 10px;
+    } */
+
+    .footer-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .footer-socials ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* CUSTOM/CT CLASSES */
+
+    .ct_flex_banner_2_col {
+        flex-direction: column-reverse;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+
+
+

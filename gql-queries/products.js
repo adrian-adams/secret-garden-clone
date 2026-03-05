@@ -1,40 +1,35 @@
 const productQuery = `query ProductsQuery {
   products {
+    availability
     color
     deliveryRange
     deliveryTime
     id
-    listColor {
-      ...RichTextFragment
-      html
-      markdown
-      raw
-      text
-    }
     petFriendly
-    plantSize
+    plantColour {
+      ... on PlantColour {
+        id
+        plantColour
+      }
+    }
+    plantSize {
+      id
+      plantSizes
+    }
     price
     productInfo
     qty
-    size
     slug
     sun
     tags
+    title
+    water
     thumbnail {
       fileName
       id
       url
     }
-    title
-    water
   }
-}
-
-fragment RichTextFragment on RichText {
-  html
-  markdown
-  raw
-  text
 }`
 
 export { productQuery };
