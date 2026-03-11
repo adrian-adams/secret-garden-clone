@@ -16,8 +16,13 @@ import CarouselSlider from "@/components/layout/carousel";
  import ProductList from "@/components/products/product-list";
 import Heading from "@/components/layout/heading";
 import Teaser from "@/components/layout/teaser";
+<<<<<<< Updated upstream
 import StoreLocator from "@/components/store-locator/store-locator";
 
+=======
+import StoreLocator from "@/components/store-locator/server/store-locator";
+import SGMarquee from "@/components/custom/sg-marquee"
+>>>>>>> Stashed changes
 
 export default async function Home() {
 // Test Query
@@ -32,6 +37,7 @@ const teaserData = await fetchHygraph(teaserQuery);
 const dataTeaser = teaserData.teasers;
 
 return (
+<<<<<<< Updated upstream
   
   <main className="flex flex-col gap-14 pb-20">
 
@@ -44,6 +50,26 @@ return (
     >
       <Button title="Shop Now" link="/shop" cta="Shop Now" target="_self" variant="primary" width="no" />
     </Hero>
+=======
+  <>
+  <div>
+    <Hero 
+        bg_desktop={headerData.headers?.[0]?.desktop.url}
+        bg_mobile={headerData.headers?.[0]?.mobile.url}
+        alt="Secret Garden"
+        heading="New Arrivals" 
+        text="Our new collection of plants delivered to your door" 
+      >
+        <div>
+          <Button variant="sg_primary" width='no'>
+            Shop Now
+          </Button>
+        </div>
+      </Hero>
+      <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
+  </div>
+    
+>>>>>>> Stashed changes
 
     
     <section >

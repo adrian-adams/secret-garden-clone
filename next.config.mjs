@@ -9,6 +9,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "eu-west-2.graphassets.com",
         pathname: "/**", // allow all images under this domain
+        // qualities: [25, 50, 75, 100]
       },
     ],
   },
