@@ -137,6 +137,10 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             width={125}
                             height={125}
                             className='object-contain z-20 absolute top-2/12 md:-top-0/12 left-2/5 transform rotate-70'
+                            height={147}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className='object-contain z-20 absolute top-2/12 md:-top-0/12 left-2/5 transform rotate-70'
+
                         />
                     )}
                     {imageDecor && (
@@ -147,6 +151,10 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             width={125}
                             height={125}
                             className='object-contain z-30 absolute top-6/12 md:top-8/12 right-3/5 transform rotate-240'
+                            height={147}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className='object-contain z-30 absolute top-6/12 md:top-8/12 right-3/5 transform rotate-240'
+
                         />
                     )}
                     {imageBG && (
@@ -155,6 +163,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             alt={title}
                             width={300}
                             height={300}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className='object-cover absolute z-20 bottom-1/5 left-6/12 transform -translate-x-6/12'
                         />
                     )}

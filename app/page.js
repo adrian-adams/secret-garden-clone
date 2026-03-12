@@ -19,6 +19,10 @@ import AboutUs from "@/components/layout/about-us";
 import Heading from "@/components/layout/heading";
 import Teaser from "@/components/layout/teaser";
 import StoreLocator from "@/components/store-locator/server/store-locator";
+import StoreLocator from "@/components/store-locator/store-locator";
+
+import StoreLocator from "@/components/store-locator/server/store-locator";
+import SGMarquee from "@/components/custom/sg-marquee";
 
 export default async function Home() {
 // Test Query
@@ -31,6 +35,9 @@ const dataTeaser = teaserData.teasers;
 
 return (
   <>
+  
+  <main className="flex flex-col gap-14 pb-20">
+
     <Hero 
       bg_desktop={headerData.headers?.[0]?.desktop.url}
       bg_mobile={headerData.headers?.[0]?.mobile.url}
@@ -45,6 +52,29 @@ return (
       </div>
     </Hero>
 
+  <>
+  <div>
+    <Hero 
+
+  <>
+  <div>
+    <Hero 
+
+        bg_desktop={headerData.headers?.[0]?.desktop.url}
+        bg_mobile={headerData.headers?.[0]?.mobile.url}
+        alt="Secret Garden"
+        heading="New Arrivals" 
+        text="Our new collection of plants delivered to your door" 
+      >
+        <div>
+          <Button variant="sg_primary" width='no'>
+            Shop Now
+          </Button>
+        </div>
+      </Hero>
+      <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
+  </div>
+    
     <section>
       <AboutUs />
     </section>

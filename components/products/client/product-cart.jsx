@@ -1,6 +1,6 @@
 'use client';
 // React
-import React from 'react'
+import React, { useState } from 'react'
 // NextJS
 import Image from 'next/image';
 // Zustand
@@ -13,13 +13,18 @@ import {
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
-} from "@/components/ui/drawer"
-import { Spinner } from "@/components/ui/spinner";
+} from "@/components/ui/drawer";
 import { Button } from '@/components/ui/button';
-import ProductInputs from '@/components/products/client/inputs';
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import SGModal from '@/components/custom/sg-modal'
 
 export default function Cart() {
+    const [openModal, setOpenModal] = useState(false);
+    const [checkout, setCheckout] = useState(false);
+    const [qtyValue, setQtyValue] = useState(1);
+    const [productSize, setProductSize] = useState('');
+    const [productColour, setProductColour] = useState('');
+
     const openCart = useCartStore((state) => state.openCart);
     const toggleCart = useCartStore((state) => state.toggleCart);
     const cartItems = useCartStore((state) => state.cartItems);
@@ -34,23 +39,34 @@ export default function Cart() {
 
     return (
         <Drawer direction="right" open={openCart} onOpenChange={toggleCart}>
-            <DrawerContent>
-                <div className={`p-4 flex flex-col gap-4 justify-between h-screen`}>
+            <DrawerContent className={``}>
+                <div className={`backdrop-blur-xl p-4 flex flex-col gap-4 justify-between h-screen`}>
                     <DrawerHeader className={`flex flex-row justify-between items-center gap-2 pb-2 border-b border-black`}>
-                        <DrawerTitle>Cart</DrawerTitle>
+                        <DrawerTitle>
+                            {cartItems.length > 0 ? (
+                                <span className={`flex flex-row items-center justify-center`}>
+                                    Cart
+                                    <span className={`sg-font-small my-auto bg-green-950 text-white px-2.5 py-0.5 ms-2 rounded-full`}>
+                                        {cartItems.length}
+                                    </span>
+                                </span>
+                            ) : (
+                                <span>Cart</span>
+                            )}
+                        </DrawerTitle>
                         <DrawerClose asChild>
-                            <Button variant="sg_drawer_close" width="inline" font="sm" size="sm" onClick={!toggleCart}>X</Button>
+                            <Button className={`bg-white`} variant="sg_drawer_close" width="inline" font="sm" size="sm" onClick={!toggleCart}>X</Button>
                         </DrawerClose>
                     </DrawerHeader>
                     {cartItems.length === 0 ? (
-                        <div className={`flex flex-col justify-center items-center gap-4 py-10`}>
+                        <div className={`sg-font-xlarge flex flex-col justify-center items-center gap-4 py-10`}>
                             <p>No items found.</p>
                         </div>
                     ) : (
                         <div className={`overflow-y-auto scroll-m-3.5`}>
-                            <ul className={`space-y-4 `}>
+                            <ul className={`space-y-4`}>
                                 {cartItems.map((items, index) => (
-                                    <li key={`${items.id}-${items.size}-${items.colour}-${index}`} className={`grid grid-cols-4 gap-4 p-3 rounded-sm bg-(--sg-olive) shadow-md min-h-50`}>
+                                    <li key={`${items.id}-${items.size}-${items.colour}-${index}`} className={`bg-white grid grid-cols-4 gap-4 p-3 rounded-sm bg-cover shadow-lg min-h-40`}>
                                         <div className={`relative rounded-sm overflow-hidden col-span-2 md:col-span-1`}>
                                             <Image
                                                 src={items.image}
@@ -102,17 +118,57 @@ export default function Cart() {
                     )}
                     <DrawerFooter className={`space-y-4 border-t border-black pt-4`}>
                         <div className={`flex flex-row justify-between items-center gap-4`}>
-                            <div>
-                                <Button variant="sg_primary" >Checkout</Button>
-                            </div>
-                            <p className={`font-bold text-lg md:text-3xl`}>Subtotal: ${subtotal.toFixed(2)}</p>
+                            <SGModal
+                                trigger={
+                                    <div>
+                                        <Button
+                                            variant="sg_primary"
+                                            // size="lg"
+                                            font="xl"
+                                            disabled={cartItems.length === 0}
+                                        >Checkout</Button>
+                                    </div>
+                                }
+                                modalTitle="Checkout unavailable"
+                                modalText="Checkout not avaialble on demo."
+                                open={checkout && cartItems.length > 0}
+                                onOpenChange={setCheckout}
+                                className={`sg-font-large`}
+                            >
+                                <Button variant="sg_secondary" font="lg" onClick={() => setCheckout(false)}>
+                                    Close
+                                </Button>
+                            </SGModal>
+                            <p className={`font-bold sg-font-medium`}>Subtotal: ${subtotal.toFixed(2)}</p>
                         </div>
-                        <div>
-                            <Button variant="sg_secondary" width="full" onClick={() => clearCart()}>Clear Cart</Button>
-                        </div>
+                        <SGModal
+                            trigger={
+                                <div>
+                                    <Button
+                                        // className={`pointer-events-none`}
+                                        variant="sg_secondary"
+                                        font="xl"
+                                        disabled={cartItems.length === 0}
+                                        width="full"
+                                        onClick={() => setOpenModal(cartItems.length === 0 ? false : true)}
+                                    >
+                                        Clear Cart
+                                    </Button>
+                                </div>
+                            }
+                            modalTitle="Are you sure?"
+                            modalText="Clearing your cart will remove all items."
+                            open={openModal && cartItems.length > 0}
+                            onOpenChange={setOpenModal}
+                            className={`sg-font-large`}
+                        >
+                            <Button variant="sg_secondary" font="lg" onClick={() => clearCart()}>
+                                Clear Carts
+                            </Button>
+                        </SGModal>
                     </DrawerFooter>
                 </div>
-            </DrawerContent>
-        </Drawer>
+            </DrawerContent >
+        </Drawer >
     )
 }

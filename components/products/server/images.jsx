@@ -3,11 +3,11 @@ import React from 'react';
 // NextJS
 import Image from "next/image";
 
-function PCImage({ image, title }) {
+function PCImage({ image, title, className }) {
     return (
         <>
             {image && (
-                <div className={`relative h-40 sm:h-80 md:h-60`}>
+                <div className={`relative h-40 sm:h-80 md:h-60 ${className || ''}`}>
                     <Image
                         src={image}
                         alt={title}
@@ -23,7 +23,7 @@ function PCImage({ image, title }) {
     )
 }
 
-export default function ProductImages({ data}) {
+export default function ProductImages({ data }) {
     const title = data.title;
     const images = [
         data.thumbnail?.[0]?.url,
@@ -46,7 +46,7 @@ export default function ProductImages({ data}) {
             <PCImage
                 image={images[0]}
                 title={title}
-                className={`col-span-2 md:col-span-1`}
+                className={`col-span-2 lg:col-span-1`}
             />
             <PCImage
                 image={images[1]}

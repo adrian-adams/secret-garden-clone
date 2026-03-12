@@ -1,17 +1,21 @@
 'use client';
 // React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // Zustand
 import useCartStore from '@/lib/cartStore';
 // Components
 import { Input } from "@/components/ui/input"
 import SGSelect from '@/components/custom/sg-select';
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 
 export default function ProductInputs({ data }) {
     const [qtyValue, setQtyValue] = useState(1);
     const [productSize, setProductSize] = useState('');
     const [productColour, setProductColour] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     // Zustand
     const cartItems = useCartStore((state) => state.cartItems);
@@ -30,29 +34,57 @@ export default function ProductInputs({ data }) {
         data.thumbnail?.[2]?.url,
     ];
 
+    useEffect(() => {
+        if (!isLoading && success) {
+            setTimeout(() => {
+                setSuccess(false);
+            }, 2000);
+        }
+    }, [isLoading, success]);
+
     const handleAddToCart = () => {
         if (!productSize || !productColour) {
             alert("Please select size and colour");
             return;
         }
 
-        addItem({
-            id: id,
-            title: title,
-            price: price,
-            size: productSize,
-            colour: productColour,
-            qty: qtyValue,
-            image: images[0],
-        });
+        try {
+            setIsLoading(true);
 
-        console.log("Added to cart:", useCartStore.getState().cartItems);
-    };
+            addItem({
+                id: id,
+                title: title,
+                price: price,
+                size: productSize,
+                colour: productColour,
+                qty: qtyValue,
+                image: images[0],
+            });
 
-    const handleEmptyCart = () => {
-        emptyCart();
-        console.log("Cart emptied:", useCartStore.getState().cartItems);
+        } catch (error) {
+
+            setIsLoading(false);
+            setError(true);
+            setTimeout(() => {
+                setError(false);
+            }, 2000);
+
+            console.error('Error adding to cart:', error);
+
+        } finally {
+            setTimeout(() => {
+                setIsLoading(false);
+                setSuccess(true);
+            }, 1000);
+
+            console.log("Added to cart:", useCartStore.getState().cartItems);
+        };
     }
+
+    // const handleEmptyCart = () => {
+    //     emptyCart();
+    //     console.log("Cart emptied:", useCartStore.getState().cartItems);
+    // }
 
     return (
         <div>
@@ -94,15 +126,34 @@ export default function ProductInputs({ data }) {
                 {!inStock ? (
                     <p className={`text-center p-2 text-red-400 font-bold`}>Out of Stock</p>
                 ) : (
-                    <Button variant="sg_primary" width='full' onClick={handleAddToCart}>
-                        ADD TO CART
+                    <Button
+                        className={`uppercase`}
+                        variant="sg_primary"
+                        width='full'
+                        size="sm"
+                        font="small"
+                        onClick={handleAddToCart}
+                    >
+                        {isLoading ? (
+                            <span className={`flex flex-row items-center justify-center gap-4`}>
+                                <span>adding to cart...</span>
+                                <Spinner className={`size-7`} />
+                            </span>
+                        ) : (
+                            <span>add to cart</span>
+                        )}
                     </Button>
                 )}
-                {/* <Button variant="sg_primary" width='full' onClick={handleEmptyCart}>
-                    EMPTY CART
-                </Button> */}
+                <div className={`overflow-hidden transition-all duration-1000 ease-in-out ${success || error ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    {success && (
+                        <p className={`sg-font-medium text-center font-semibold pt-4 leading-snug`}>Your cart has been updated!</p>
+                    )}
+                    {error && (
+                        <p className={`sg-font-medium text-center pt-4 text-red-800`}>Cart update failed, please try again.</p>
+                    )}
+                </div>
             </div>
         </div>
-
     )
+
 }

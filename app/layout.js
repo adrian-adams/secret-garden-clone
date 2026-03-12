@@ -10,17 +10,18 @@ import Footer from "@/components/footer/server/footer";
 
 // Fonts
 import { Geist, Geist_Mono } from "next/font/google";
+// Components
+import Navigation from "@/components/navigation/server/navigation";
+import CartProvider from '@/components/products/client/cart-provider';
+import Footer from "@/components/footer/server/footer";
+// Fonts
+import { League_Spartan } from "next/font/google";
 import "./globals.css";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const leagueSpartan = League_Spartan({
+  variable: "--font-league-spartan",
+  subsets: ["latin"],
+})
 
 // Metadata
 export const metadata = {
@@ -28,10 +29,6 @@ export const metadata = {
   name: { viewport: "width=device-width, initial-scale=1",},
   title: "Secret Garden",
   description: "Our new collection of plants delivered to your door",
-  link: {
-    href: "https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700,1&display=swap",
-    rel: "stylesheet"
-  }
 };
 
 export default async function RootLayout({ children }) {
@@ -43,6 +40,9 @@ export default async function RootLayout({ children }) {
       {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> */}
       <body>
         <Navigation logo={logoImg} />
+    <html lang="en" className={leagueSpartan.className}>
+      <body className={`font-sans`}>
+        <Navigation />
         <CartProvider />
         <main> 
           {children}

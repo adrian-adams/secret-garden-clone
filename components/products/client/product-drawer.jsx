@@ -26,7 +26,7 @@ export default function ProductDrawer({ data }) {
             <DrawerHeader className={`sticky top-0`}>
                 <div className={`flex justify-end`}>
                     <DrawerClose asChild>
-                        <Button variant="sg_secondary" font="sm">X</Button>
+                        <Button variant="sg_secondary" font="sm" size="sm">X</Button>
                     </DrawerClose>
                 </div>
                 <div>

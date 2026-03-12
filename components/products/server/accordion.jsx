@@ -24,8 +24,8 @@ export default function ProductAccordion({ data }) {
 
     return (
         <div className={`border-t border-gray-300 pt-4`}>
-            <h2 className={`sg-font-large uppercase`}>PRODUCT INFO</h2>
-            <SGAccordion className={`text-xl`}>
+            <h2 className={`sg-font-small uppercase`}>PRODUCT INFO</h2>
+            <SGAccordion>
                 <SGAccordionItem
                     value="Description"
                     title="Description"

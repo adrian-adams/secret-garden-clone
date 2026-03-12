@@ -49,7 +49,7 @@ export default function ProductCard({ data }) {
                             alt={title}
                             className={`${baseStyles} ${hover ? 'opacity-0' : 'opacity-100'}`}
                             fill
-                            sizes="100vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     )}
 
@@ -59,7 +59,7 @@ export default function ProductCard({ data }) {
                             alt={title}
                             className={`${baseStyles} ${hover ? 'opacity-100' : 'opacity-0'}`}
                             fill
-                            sizes="100vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                     )}
                 </div>

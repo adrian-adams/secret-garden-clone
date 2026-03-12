@@ -24,7 +24,7 @@ export default function FooterGallery({ gallery }) {
                 scrollTrigger: {
                     trigger: containerGallery.current,
                     scrub: true,
-                    markers: true
+                    // markers: true
                 },
                 scale: 1.5,
                 duration: 0.6,

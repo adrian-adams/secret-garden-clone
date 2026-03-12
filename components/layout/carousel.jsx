@@ -30,14 +30,22 @@ export default async function CarouselSlider() {
           <CarouselItem key={image.id}>
             <div>
               {/* <Card> */}
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <CardContent className="relative h-50 md:h-140">
+=======
+              <CardContent className="relative h-50 md:h-120">
+>>>>>>> Stashed changes
+=======
+              <CardContent className="relative h-50 md:h-120">
+>>>>>>> Stashed changes
                 <Image
                   src={image.url}
                   alt={"Secret Garden"}
                   fill
-                  sizes="100vw"
-                  // unoptimized
-                  quality={75}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  unoptimized
+                  // quality={100}
                   // width={500}
                   // height={300}
                   className="object-cover"

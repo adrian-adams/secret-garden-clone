@@ -71,7 +71,7 @@ export default function Stores({ stores }) {
         <Tabs
             defaultValue={activeTab}
             onValueChange={handleTabChange}
-            className={`bg-(--sg-locator) grid grid-cols-1 md:grid-cols-3 h-full md:h-[calc(100vh-250px)]`}
+            className={`bg-(--sg-locator) grid grid-cols-1 md:grid-cols-3 h-full md:h-[calc(100vh-150px)]`}
         >
             <TabsList className={`w-full h-full p-10 text-left`} >
                 <h2 className={`sg-font-xlarge uppercase text-black text-left  leading-tight pb-4`}>Come visit our store</h2>
@@ -101,8 +101,8 @@ export default function Stores({ stores }) {
                                     src={store.storeImage.url}
                                     alt={store.storeName}
                                     fill
+                                    unoptimized
                                     sizes="(max-width: 768px) 100vw, 33vw"
-                                    quality={`100%`}
                                     className={`gsap-tab object-cover`}
                                 />
                                 <div className={`relative h-full flex flex-col gap-4 p-4 ${store.specialAnnouncement ? 'justify-between' : 'justify-start md:justify-end'} `}>
