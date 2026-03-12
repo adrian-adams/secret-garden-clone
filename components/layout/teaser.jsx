@@ -38,9 +38,12 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             alt={title}
                             width={125}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             height={125}
                             className='object-contain z-20 absolute -top-2/12 left-3/6 sm:left-3/5 transform rotate-70'
 =======
+=======
+>>>>>>> Stashed changes
                             height={147}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className='object-contain z-20 absolute top-2/12 md:-top-0/12 left-2/5 transform rotate-70'
@@ -54,9 +57,12 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             alt={title}
                             width={125}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             height={125}
                             className='object-contain z-30 absolute top-8/12 right-3/5 transform rotate-240'
 =======
+=======
+>>>>>>> Stashed changes
                             height={147}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className='object-contain z-30 absolute top-6/12 md:top-8/12 right-3/5 transform rotate-240'

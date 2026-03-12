@@ -22,6 +22,9 @@ import StoreLocator from "@/components/store-locator/store-locator";
 =======
 import StoreLocator from "@/components/store-locator/server/store-locator";
 import SGMarquee from "@/components/custom/sg-marquee"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 export default async function Home() {
@@ -37,6 +40,7 @@ const teaserData = await fetchHygraph(teaserQuery);
 const dataTeaser = teaserData.teasers;
 
 return (
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   
   <main className="flex flex-col gap-14 pb-20">
@@ -54,6 +58,11 @@ return (
   <>
   <div>
     <Hero 
+=======
+  <>
+  <div>
+    <Hero 
+>>>>>>> Stashed changes
         bg_desktop={headerData.headers?.[0]?.desktop.url}
         bg_mobile={headerData.headers?.[0]?.mobile.url}
         alt="Secret Garden"
@@ -69,6 +78,9 @@ return (
       <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
   </div>
     
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
     

@@ -2,8 +2,11 @@ import React from 'react'
 import Image from 'next/image';
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // const backgroundImage = '';
 
+=======
+>>>>>>> Stashed changes
 export default function Hero({ heading, text, bg_desktop, bg_mobile, children }) {
     return (
         <section className='relative h-screen'>
@@ -89,6 +92,9 @@ export default function Hero({ heading, text, bg_desktop, bg_mobile, children })
                 <h1 className='uppercase font-bold'>{heading}</h1>
                 <p className='sg-font-large leading-snug'>{text}</p>
                 {children}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
         </section>

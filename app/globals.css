@@ -140,8 +140,13 @@
   }
   body {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     @apply bg-background text-foreground;
     font-family: 'Clash Grotesk', sans-serif;
+=======
+    @apply bg-background text-foreground overflow-x-hidden;
+    /* font-family: 'Clash Grotesk', sans-serif; */
+>>>>>>> Stashed changes
   }
 
   section:not(:first-child) {

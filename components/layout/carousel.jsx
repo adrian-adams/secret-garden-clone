@@ -48,7 +48,11 @@ export default async function CarouselSlider() {
             <div>
               {/* <Card> */}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               <CardContent className="relative h-50 md:h-140">
+=======
+              <CardContent className="relative h-50 md:h-120">
+>>>>>>> Stashed changes
 =======
               <CardContent className="relative h-50 md:h-120">
 >>>>>>> Stashed changes

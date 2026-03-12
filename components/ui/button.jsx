@@ -6,11 +6,14 @@ import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
 =======
+=======
+>>>>>>> Stashed changes
   // "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   "inline-flex items-center justify-center gap-2 border-2 font-bold text-center transition-all cursor-pointer rounded-full leading-snug",
   {
@@ -19,6 +22,9 @@ const buttonVariants = cva(
         sg_primary: "bg-(--sg-green) border-(--sg-green) text-white hover:bg-transparent hover:text-(--sg-green)",
         sg_secondary: "bg-transparent border-black text-(--sg-green) hover:bg-(--sg-green) hover:border-(--sg-green) hover:text-white",
         sg_drawer_close: "bg-transparent border-black text-(--sg-green) hover:bg-(--sg-green) hover:border-(--sg-green) hover:text-white text-sm rounded-full",
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         destructive:
@@ -33,9 +39,15 @@ const buttonVariants = cva(
       },
       size: {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+=======
+        default: "px-6 py-1.75",
+        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "px-2.5 py-1",
+>>>>>>> Stashed changes
 =======
         default: "px-6 py-1.75",
         xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
