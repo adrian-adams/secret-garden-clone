@@ -10,59 +10,56 @@ import { productQuery } from "@/gql-queries/products";
 import { teaserQuery } from "@/gql-queries/teaser";
 import { testProductsQuery } from "@/gql-queries/tests";
 // Components
-import Button from "@/components/custom/button";
+import {Button} from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import Hero from "@/components/layout/hero";
 import CarouselSlider from "@/components/layout/carousel";
- import ProductList from "@/components/products/product-list";
+import ProductList from "@/components/products/server/product-list";
+import AboutUs from "@/components/layout/about-us";
 import Heading from "@/components/layout/heading";
 import Teaser from "@/components/layout/teaser";
-<<<<<<< Updated upstream
+import StoreLocator from "@/components/store-locator/server/store-locator";
 import StoreLocator from "@/components/store-locator/store-locator";
 
-=======
 import StoreLocator from "@/components/store-locator/server/store-locator";
-import SGMarquee from "@/components/custom/sg-marquee"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+import SGMarquee from "@/components/custom/sg-marquee";
 
 export default async function Home() {
 // Test Query
 const data = await fetchHygraph(testProductsQuery);
 // Query for Header
 const headerData = await fetchHygraph(header);
-// Query for Products
-const productData = await fetchHygraph(productQuery);
-const dataProduct = productData.products;
 // Query for Teaser
 const teaserData = await fetchHygraph(teaserQuery);
 const dataTeaser = teaserData.teasers;
 
 return (
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+  <>
   
   <main className="flex flex-col gap-14 pb-20">
 
     <Hero 
-      bg_desktop={headerData.headers?.[0]?.desktop?.[0]?.url}
-      bg_mobile={headerData.headers?.[0]?.mobile?.url}
+      bg_desktop={headerData.headers?.[0]?.desktop.url}
+      bg_mobile={headerData.headers?.[0]?.mobile.url}
       alt="Secret Garden"
       heading="New Arrivals" 
       text="Our new collection of plants delivered to your door" 
     >
-      <Button title="Shop Now" link="/shop" cta="Shop Now" target="_self" variant="primary" width="no" />
+      <div>
+        <Button variant="sg_primary" width='no'>
+          Shop Now
+        </Button>
+      </div>
     </Hero>
-=======
+
   <>
   <div>
     <Hero 
-=======
+
   <>
   <div>
     <Hero 
->>>>>>> Stashed changes
+
         bg_desktop={headerData.headers?.[0]?.desktop.url}
         bg_mobile={headerData.headers?.[0]?.mobile.url}
         alt="Secret Garden"
@@ -78,33 +75,18 @@ return (
       <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
   </div>
     
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-
-    
-    <section >
-      <Heading title="About Us" />
-      <div className="md:w-9/12 mx-auto flex flex-col md:flex-row justify-center gap-5 md:gap-8">
-        <p className="flex-6/12 text-lg md:text-3xl">
-          We are a small plant store with three locations in NYC. Come shop at any of our locations or order plants from the comfort of your couch. labore et dolor magna aliqua. Ut enim ad minim velit, quis nostrud exercitation porttitor.
-          <br></br>
-          <br></br>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris rhoncus aenean vel elit. Tristique nulla aliquet enim tortor at auctor urna mauris commodo.
-        </p>
-      </div>
-      
+    <section>
+      <AboutUs />
     </section>
 
     <section className="w-full mx-auto">
       <CarouselSlider />
     </section>
     
-    <section >
+    <section>
       <Heading title="Shop Bundles" />
       <div className="w-full max-w-285 mx-auto">
-        <ProductList queryResults={dataProduct} tags={"home"} />
+        <ProductList tags={"home"} />
       </div>
     </section>
 
@@ -122,12 +104,13 @@ return (
         tab={dataTeaser?.[0]?.newTab}
       />
     </section>
-
+    <Separator size="sm" />
     <section className={`w-full px-0`}>
       <StoreLocator />
+      <br></br>
+      
     </section>
-    
-  </main>
-
-  );
+    <Separator size="sm" />
+  </>
+  )
 }

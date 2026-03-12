@@ -1,19 +1,21 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+// API
+import { fetchHygraph } from "@/api/hygraph";
+// GraphQL Queries
+import { logoQuery } from "@/gql-queries/logo";
+// Components
+import Navigation from "@/components/navigation/navigation";
+import CartProvider from '@/components/products/client/cart-provider';
+import Footer from "@/components/footer/server/footer";
+// (Drawer not needed here)
+
+// Fonts
 import { Geist, Geist_Mono } from "next/font/google";
-=======
-=======
->>>>>>> Stashed changes
 // Components
 import Navigation from "@/components/navigation/server/navigation";
 import CartProvider from '@/components/products/client/cart-provider';
 import Footer from "@/components/footer/server/footer";
 // Fonts
 import { League_Spartan } from "next/font/google";
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 import "./globals.css";
 
 const leagueSpartan = League_Spartan({
@@ -21,10 +23,7 @@ const leagueSpartan = League_Spartan({
   subsets: ["latin"],
 })
 
-<<<<<<< Updated upstream
-=======
 // Metadata
->>>>>>> Stashed changes
 export const metadata = {
   charset: "UTF-8",
   name: { viewport: "width=device-width, initial-scale=1",},
@@ -32,23 +31,15 @@ export const metadata = {
   description: "Our new collection of plants delivered to your door",
 };
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const data = await fetchHygraph(logoQuery);
+  const logoImg = data.brandLogos?.[0]?.logo.url;
+
   return (
     <html lang="en">
       {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> */}
       <body>
-        {children}
-=======
-export default async function RootLayout({ children }) {
-
-  return (
-=======
-export default async function RootLayout({ children }) {
-
-  return (
->>>>>>> Stashed changes
+        <Navigation logo={logoImg} />
     <html lang="en" className={leagueSpartan.className}>
       <body className={`font-sans`}>
         <Navigation />
@@ -57,7 +48,6 @@ export default async function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
->>>>>>> Stashed changes
       </body>
     </html>
   );

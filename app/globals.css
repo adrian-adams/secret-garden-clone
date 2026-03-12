@@ -54,18 +54,14 @@
 } */
 
 :root {
-<<<<<<< Updated upstream
+  --sg-green: #0f342d;
+  --sg-olive: #d4e3d3;
+  --sg-lightgreen: #f1eeda;
+  --sg-locator: #f4f3e7;
   --sg-green: hsl(169, 56%, 13%);
   --sg-olive: hsl(116, 22%, 86%);
   --sg-lightgreen: hsl(52, 45%, 90%);
   --sg-locator: hsl(55, 37%, 93%);
-=======
-  --sg-green: #0f342d;
-  --sg-olive: #d4e3d3;
-  --sg-lightgreen: #f1eeda;
-  --sg-ribbon: #eaecc6;
-  --sg-locator: #f4f3e7;
->>>>>>> Stashed changes
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -139,18 +135,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+    @apply bg-background text-foreground overflow-x-hidden;
     @apply bg-background text-foreground;
     font-family: 'Clash Grotesk', sans-serif;
 =======
     @apply bg-background text-foreground overflow-x-hidden;
     /* font-family: 'Clash Grotesk', sans-serif; */
->>>>>>> Stashed changes
   }
 
   section:not(:first-child) {
-=======
     @apply bg-background text-foreground overflow-x-hidden;
     /* font-family: 'Clash Grotesk', sans-serif; */
   }
@@ -200,18 +193,34 @@
   }
 
   section {
->>>>>>> Stashed changes
     @apply px-6 w-full lg:w-10/12 mx-auto;
   }
 
-  h2 {
-    @apply font-medium;
-    font-size: clamp(2rem, 5vw, 3rem);
+  /* Text */
+
+  h1 {
+    @apply font-bold leading-snug;
+    font-size: clamp(2.5rem, 5vw, 2.5rem);
   }
 
-  /* p {
-    font-size: clamp(0.75rem, 5vw, 2rem);
-  } */
+  h2 {
+    @apply font-bold leading-snug;
+    font-size: clamp(2rem, 5vw, 2.25rem);
+  }
+
+  h3{
+    @apply font-bold leading-snug;
+    font-size: clamp(1.5rem, 5vw, 1.5 rem) !important;
+  }
+
+  li {
+    font-size: clamp(0.875rem, 5vw, 1.35rem);
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: transparent;
+    -webkit-box-color: white;
+  }
 }
 
 @layer utilities {
@@ -221,25 +230,71 @@
     gap: 20px;
   }
 
-  .sg-font {
-    p {
-      font-size: clamp(0.75rem, 5vw, 2rem);
-    }
+  .sg-font-xlarge {
+    font-size: clamp(0.75rem, 5vw, 2rem);
   }
 
-  /* .sg-store-locator {
-    & p, li {
-      font-size: clamp(0.65rem, 5vw, 1.1rem) !important;
-    }
+  .sg-font-large {
+    font-size: clamp(0.75rem, 5vw, 1.75rem);
+  }
 
-    .sg-store-announcement {
-      @apply backdrop-blur-xl;
-    }
+  .sg-font-medium {
+    font-size: clamp(0.75rem, 5vw, 1.5rem);
+  }
 
-    .sg-store-background {
-      background: hsla(var(--sg-olive), 0.8);
-    }
-  } */
+  .sg-font-small {
+    font-size: clamp(0.75rem, 5vw, 1.15rem);
+  }
+
+  .sg-linkhover::after {
+    @apply font-bold text-[clamp(0.75rem,5vw,1rem)];
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.15s ease;
+  }
+
+  .sg-linkhover::after {
+    color: #000000;
+    transform: scaleX(1);
+  }
+
+  .sg-list li {
+    position: relative;
+    padding-inline-start: 25px;
+  }
+
+  .sg-list li::before {
+    content: url("./leaf.svg");
+      position: absolute;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .sg-cart {
+    scrollbar-width: 0;
+  }
+
+  .sg-store-names {
+    @apply relative
+        after:content-['']
+        after:absolute after:left-0 after:-bottom-1
+        after:w-full after:h-1
+        after:bg-(--sg-green)
+        after:origin-left after:scale-x-0
+        after:transition-transform after:duration-250 after:ease-in-out
+        hover:after:scale-x-100 
+        uppercase 
+        cursor-pointer
+  }
 }
 
 

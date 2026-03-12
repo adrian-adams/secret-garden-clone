@@ -1,10 +1,19 @@
 "use client";
 import * as React from "react"
+import { useRef } from "react"
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+
+// GSAP
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+// GSAP
 
 const CarouselContext = React.createContext(null)
 
@@ -148,20 +157,32 @@ function CarouselPrevious({
   size = "icon",
   ...props
 }) {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
+  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+  // const container = useRef();
+
+  // useGSAP(() => {
+  //   gsap.from("#gsap-prev"), {
+  //     x: -400,
+  //     opacity: 0.5,
+  //     duration: 0.75
+  //   }
+  // }, { scope: container })
 
   return (
     <Button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
-      className={cn("absolute size-8 rounded-full", orientation === "horizontal"
+      className={cn("gsap-prev absolute size-8 rounded-full border-2 border-black", orientation === "horizontal"
         ? "top-1/2 -left-12 -translate-y-1/2"
         : "-top-12 left-1/2 -translate-x-1/2 rotate-90", className)}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}>
-      <ArrowLeft />
+      <div className={`relative`}>
+        <ArrowLeft className={`size-6 md:size-8 absolute top-1/2 left-3/12 -translate-y-1/2 -translate-x-1/2`} />
+      </div>
+
       <span className="sr-only">Previous slide</span>
     </Button>
   );
@@ -180,13 +201,15 @@ function CarouselNext({
       data-slot="carousel-next"
       variant={variant}
       size={size}
-      className={cn("absolute size-8 rounded-full", orientation === "horizontal"
+      className={cn("gsap-next absolute size-8 rounded-full m-auto", orientation === "horizontal"
         ? "top-1/2 -right-12 -translate-y-1/2"
         : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90", className)}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}>
-      <ArrowRight />
+      <div className={`relative`}>
+        <ArrowRight className={`size-6 md:size-8 absolute top-1/2 left-3/12 -translate-y-1/2 -translate-x-1/2`} />
+      </div>
       <span className="sr-only">Next slide</span>
     </Button>
   );
