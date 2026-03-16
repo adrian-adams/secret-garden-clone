@@ -42,7 +42,9 @@ return (
           >
           <div>
             <Button variant="sg_primary" width='no'>
-              Shop Now
+              <a href="/shop" title="Shop">
+                Shop Now
+              </a>
             </Button>
           </div>
         </Hero>

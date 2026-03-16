@@ -14,7 +14,7 @@ export default function SGSelect({ placeholder, label, array, onChange, value })
 
     return (
         <div className="flex flex-col gap-1">
-            <label>{label}</label>
+            <label className={`font-bold`}>{label}</label>
             <Select value={value} onValueChange={onChange}>
                 <SelectTrigger className="rounded-4xl w-full md:max-w-40 text-black">
                     <SelectValue placeholder={placeholder} />

@@ -88,10 +88,10 @@ export default function ProductInputs({ data }) {
 
     return (
         <div>
-            <div className={`grid grid-cols-1 sm:grid-cols-3 gap-3`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-3 gap-3 backdrop-blur-lg p-2 rounded-lg`}>
                 {/* Quantity */}
                 <div className={`flex flex-col gap-1`}>
-                    <label>Qty</label>
+                    <label className='font-bold'>Qty</label>
                     <Input
                         value={qtyValue}
                         type="number"

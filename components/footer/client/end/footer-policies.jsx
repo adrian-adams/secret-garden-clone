@@ -8,7 +8,7 @@ export default function FooterPolicies() {
     const policyPages = [
         { id: 4, name: "Privacy Policy", href: "/privacy-policy" },
         { id: 5, name: "Terms & Conditions", href: "/terms-and-conditions" },
-        { id: 6, name: "Deliveries & Returns", href: "/delivery-and-returns" }
+        { id: 6, name: "Deliveries & Returns", href: "./delivery-and-returns" }
     ];
 
     return (
