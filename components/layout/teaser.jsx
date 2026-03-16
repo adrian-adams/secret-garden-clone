@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { createCharFadeInScrollX, createFadeInScrollY } from '@/gsap-animations/custom-gsap';
 import { Button } from "@/components/ui/button"
 
 gsap.registerPlugin(ScrollToPlugin, SplitText, ScrollTrigger);
@@ -34,48 +35,22 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
             type: "chars, words"
         });
 
-        gsap.from(splitText.chars, {
-            scrollTrigger: {
-                trigger: titleRef.current,
-                toggleActions: "play pause resume reset"
-            },
-            opacity: 0,
-            x: 20,
-            duration: 0.5,
-            stagger: 0.05,
-            ease: 'power2.out'
-        });
+        gsap.from(splitText.chars, createCharFadeInScrollX(titleRef.current));
 
         // PreText
-        gsap.from(pretextRef.current, {
-            scrollTrigger: {
-                trigger: pretextRef.current,
-                toggleActions: "play pause resume reset"
-            },
-            opacity: 0,
-            y: -40,
-            duration: 0.9,
-            ease: 'power2.out'
-        });
+        gsap.from(pretextRef.current,
+            createFadeInScrollY(pretextRef.current, 'top')
+        );
 
         // Button
-        gsap.from(btnRef.current, {
-            scrollTrigger: {
-                trigger: btnRef.current,
-                toggleActions: "play pause resume reset"
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.9,
-            ease: 'power2.out'
-        });
+        gsap.from(btnRef.current, createFadeInScrollY(btnRef.current));
 
         // Leaf Top Right
         gsap.to(leafTrRef.current, {
             scrollTrigger: {
                 trigger: leafTrRef.current,
                 toggleActions: "play pause resume reset",
-                scrub: true
+                scrub: true,
             },
             y: -80,
             x: 120,
@@ -103,7 +78,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                 toggleActions: "play pause resume reset",
                 scrub: true
             },
-            scale: 1.3,
+            scale: 1.4,
             duration: 0.9,
             ease: 'power2.out'
         });
@@ -116,7 +91,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
     }, { scope: container });
 
     return (
-        <div className={`${appliedVariant} relative pt-20 overflow-hidden md:overflow-visible`} ref={container}>
+        <div className={`${appliedVariant} relative pt-20 `} ref={container}>
             <div className='relative flex-1/2'>
                 <div className={`gsap-teaser relative w-65 md:w-8/12 h-100 mx-auto`}>
                     {image && (
@@ -135,8 +110,6 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             src={imageDecor}
                             alt={title}
                             width={125}
-                            height={125}
-                            className='object-contain z-20 absolute top-2/12 md:-top-0/12 left-2/5 transform rotate-70'
                             height={147}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className='object-contain z-20 absolute top-2/12 md:-top-0/12 left-2/5 transform rotate-70'
@@ -149,8 +122,6 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             src={imageDecor}
                             alt={title}
                             width={125}
-                            height={125}
-                            className='object-contain z-30 absolute top-6/12 md:top-8/12 right-3/5 transform rotate-240'
                             height={147}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className='object-contain z-30 absolute top-6/12 md:top-8/12 right-3/5 transform rotate-240'
@@ -171,7 +142,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
             </div>
             <div className={`flex md:flex-1/2 justify-center pt-6 md:pt-0`}>
                 <div className={`w-full md:w-8/12`}>
-                    <div className={`flex flex-col gap-6`}>
+                    <div className={`flex flex-col gap-6 pt-10 md:pt-0`}>
                         <p ref={pretextRef} className={`text-xl font-semibold`}>{preText}</p>
                         <h2 ref={titleRef} className={`leading-tight`}>
                             {title}

@@ -11,8 +11,7 @@ import { Menu } from "lucide-react";
 // GSAP
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import { createSlideInY } from "@/gsap-animations/custom-gsap"
 gsap.registerPlugin(useGSAP);
 
 export function HamburgerMenu({ onClick }) {
@@ -47,14 +46,8 @@ export default function NavigationMenu({ logo }) {
         after:transition-all after:duration-200 after:ease-out
         hover:after:scale-x-90 cursor-pointer
     `
-
     useGSAP(() => {
-        gsap.from('.gsap-nav', {
-            yPercent: -150,
-            // opactiy: 0.5,
-            duration: 0.9,
-            ease: 'power2.inOut'
-        });
+        gsap.from('.gsap-nav', createSlideInY('top'));
     }, [pathname]);
 
     return (
@@ -91,11 +84,11 @@ export default function NavigationMenu({ logo }) {
                                 </li>
                             ))}
                             <li>
-                                <button className={`sg-font-medium ${linkStyle} p-0`} onClick={toggleCart}>
+                                <button className={`sg-font-medium ${linkStyle} p-0 h-10 flex justify-center items-center`} onClick={toggleCart}>
                                     {cartItems.length > 0 ? (
-                                        <span className={`flex flex-row items-center`}>
+                                        <span className={`h-10 flex flex-row items-center justify-center`}>
                                             Cart
-                                            <span className={`sg-font-mediumflex flex-row items-center bg-green-950 text-white px-3.5 py-0.5 ms-2 rounded-full`}>
+                                            <span className={`sg-badge-green`}>
                                                 {cartItems.length}
                                             </span>
                                         </span>
@@ -111,8 +104,7 @@ export default function NavigationMenu({ logo }) {
                 </div>
                 {/* Mobile */}
                 <ul
-                    className={`flex flex-col justify-center items-center gap-2 md:hidden transition-all duration-500 ease-in-out overflow-hidden
-                                ${isMenuOpen ? 'opacity-100 max-h-300 translate-y-0 pt-4' : 'opacity-0 max-h-0 translate-y-0 pointer-events-none'}`}>
+                    className={`flex flex-col justify-center items-center gap-2 md:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'opacity-100 max-h-300 translate-y-0 pt-4' : 'opacity-0 max-h-0 translate-y-0 pointer-events-none'}`}>
                     {menuItems?.map((item) => (
                         <li key={item.id}>
                             <Link href={item.href}

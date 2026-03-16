@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   // "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  "inline-flex items-center justify-center gap-2 border-2 font-bold text-center transition-all cursor-pointer rounded-full leading-snug",
+  "flex items-center justify-center gap-2 border-2 h-10 font-bold text-center transition-all cursor-pointer rounded-full",
   {
     variants: {
       variant: {
@@ -25,14 +25,9 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "px-6 py-1.75",
-        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
+        default: "px-6",
+        xs: "gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "px-2.5 py-1",
-
-        default: "px-6 py-1.75",
-        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "px-2.5 py-1",
-
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9",
         "icon-xs": "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
@@ -50,12 +45,17 @@ const buttonVariants = cva(
         full: "block w-full",
         inline: "w-fit",
       },
+      disabled: {
+        true: "pointer-events-none opacity-50",
+        false: ""
+      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
       font: "default",
       width: "full",
+      disabled: "false"
     },
   }
 )
@@ -66,6 +66,7 @@ function Button({
   size = "default",
   font = "default",
   width = "default",
+  disabled = "default",
   asChild = false,
   ...props
 }) {
@@ -78,7 +79,8 @@ function Button({
       data-size={size}
       data-font={font}
       data-width={width}
-      className={cn(buttonVariants({ variant, size, font, width, className }))}
+      data-disabled={disabled}
+      className={cn(buttonVariants({ variant, size, font, width, disabled, className }))}
       {...props} />
   );
 }

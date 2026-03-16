@@ -13,12 +13,10 @@ export default function FooterGallery({ gallery }) {
     const containerGallery = useRef();
 
     useGSAP(() => {
-        // Kill ALL ScrollTriggers (not just scoped ones)
         ScrollTrigger.getAll().forEach(trigger => {
             trigger.kill();
         });
 
-        // Small delay to ensure DOM is settled
         setTimeout(() => {
             gsap.to('.gsap-footer-gallery', {
                 scrollTrigger: {
@@ -31,18 +29,17 @@ export default function FooterGallery({ gallery }) {
                 ease: 'power2.out'
             });
 
-            // Refresh after creating new ScrollTriggers
             ScrollTrigger.refresh();
         }, 50);
 
         return () => {
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         }
-    }, [pathname]); // Keep pathname dependency
+    }, [pathname]);
 
     return (
         <section ref={containerGallery}>
-            <ul className={`grid grid-cols-2 md:grid-cols-4 gap-6 justify-center h-100 md:h-50 lg:h-75 xl:h-85`}>
+            <ul className={`grid grid-cols-2 md:grid-cols-4 gap-6 justify-center h-100 md:h-50 lg:h-65 xl:h-70 xxl:h-80`}>
                 {gallery?.map((img) => (
                     <li key={img.id} className={`relative flex justify-center h-full w-full rounded-xl overflow-hidden`}>
                         {img && (

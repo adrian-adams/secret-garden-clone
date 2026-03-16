@@ -1,13 +1,20 @@
 import React from 'react'
 // Components
 import HoverLink from '@/components/custom/sg-link';
+// Lucide
+import { Mail } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export default function FooterContact({ footer }) {
+
+    const contactUsStyle = 'flex flex-row items-center gap-2'
+
     return (
         <div>
             <h3>{footer.contactUs}</h3>
-            <ul className={`flex flex-col gap-1.5 wrap-break-word`}>
-                <li>
+            <ul className={`text-[5px]! flex flex-col gap-1.5 wrap-break-word`}>
+                <li className={`${contactUsStyle}`}>
+                    <Mail size="16" />
                     <HoverLink>
                         <a
                             href={`mailto:${footer.email}`}
@@ -15,9 +22,9 @@ export default function FooterContact({ footer }) {
                             {footer.email}
                         </a>
                     </HoverLink>
-
                 </li>
-                <li>
+                <li className={`${contactUsStyle}`}>
+                    <Phone size="16" />
                     <HoverLink>
                         <a
                             href={`tel:${footer.phoneNumber}`}
@@ -28,6 +35,6 @@ export default function FooterContact({ footer }) {
 
                 </li>
             </ul>
-        </div>
+        </div >
     )
 }

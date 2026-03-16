@@ -1,12 +1,5 @@
-// React
 import * as React from "react"
-// NextJS
-import Image from "next/image";
-// API
 import { fetchHygraph } from "@/api/hygraph";
-// GrapghQL Query
-import { carouselQuery } from "@/gql-queries/carousel"
-// Components
 import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
@@ -15,11 +8,35 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Image from "next/image"
+
+const buttonStyles = "bg-(--sg-olive) hover:bg-(--sg-green) active:bg-(--sg-olive) border-6 border-white p-5 md:p-8 hover:fill-white top-8/12 md:top-1/2 cursor-pointer";
+const xAxis = 5.5;
+
+// GraphQL query to fetch carousel data
+const carouselQuery = `query CarouselQuery {
+  carousels {
+    id
+    carousel {
+      ... on Slider {
+        id
+        slider {
+          fileName
+          height
+          id
+          size
+          url(transformation: {image: {quality: {value: 100}}})
+          width
+        }
+      }
+    }
+  }
+}`
 
 export default async function CarouselSlider() {
   const data = await fetchHygraph(carouselQuery);
   const images = data.carousels?.[0]?.carousel?.[0]?.slider ?? [];
-  const buttonStyles = "bg-(--sg-olive) hover:bg-(--sg-green) active:bg-(--sg-olive) border-6 border-white p-5 md:p-8 hover:fill-white top-8/12 md:top-1/2 cursor-pointer";
+  // const imageQuality = data.carousels?.[0]?.carousel?.[0]?.slider?.[0]?.url?.transformation?.[0]?.image?.quality?.value ?? 100;
 
   if (!images.length) return null;
 
@@ -30,22 +47,14 @@ export default async function CarouselSlider() {
           <CarouselItem key={image.id}>
             <div>
               {/* <Card> */}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              <CardContent className="relative h-50 md:h-140">
-=======
-              <CardContent className="relative h-50 md:h-120">
->>>>>>> Stashed changes
-=======
-              <CardContent className="relative h-50 md:h-120">
->>>>>>> Stashed changes
+              <CardContent className="relative h-50 md:h-[calc(100vh-180px)]">
                 <Image
                   src={image.url}
                   alt={"Secret Garden"}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  unoptimized
-                  // quality={100}
+                  sizes="100vw"
+                  // unoptimized
+                  quality={75}
                   // width={500}
                   // height={300}
                   className="object-cover"
@@ -56,8 +65,8 @@ export default async function CarouselSlider() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className={`gsap-prev ${buttonStyles} left-0 md:left-11 -translate-y-1/2`} />
-      <CarouselNext className={`gsap-next ${buttonStyles} right-0 md:right-11 -translate-y-1/2`} />
+      <CarouselPrevious className={`${buttonStyles} left-0 md:left-11 -translate-y-1/2`} />
+      <CarouselNext className={`${buttonStyles} right-0 md:right-11 -translate-y-1/2`} />
     </Carousel>
   )
 }

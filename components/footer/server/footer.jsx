@@ -14,7 +14,7 @@ import FooterContact from '../client/about/footer-contact';
 import FooterSocials from '../client/about/footer-socials';
 import FooterYear from '../client/end/footer-year';
 import FooterPolicies from '../client/end/footer-policies';
-
+import FooterClient from '@/components/footer/client/footer'
 
 export default async function Footer() {
     const data = await fetchHygraph(footerDetails);
@@ -24,27 +24,15 @@ export default async function Footer() {
     const services = footer.footerServices;
     const gallery = footer.footerGallery;
 
-    return (
-        <footer className={`flex flex-col gap-10 bg-(--sg-locator)`}>
-            <FooterNewsletter />
-            <FooterServices services={services} />
-            <FooterGallery gallery={gallery} />
-            {/* About & Contact & Socials */}
-            <div>
-                <section className={`grid grid-cols-1 md:grid-cols-4 gap-8`}>
-                    <FooterAbout footer={footer} />
-                    <FooterContact footer={footer} />
-                    <FooterSocials footer={footer} socials={socials} />
-                </section>
-            </div>
 
-            {/* Year & Pages */}
-            <div className={`bg-black text-white py-6 text-sm`}>
-                <section className={`flex flex-col md:flex-row justify-between items-center gap-3`}>
-                    <FooterYear footer={footer} />
-                    <FooterPolicies />
-                </section>
-            </div>
-        </footer >
+    return (
+        <>
+            <FooterClient
+                services={services}
+                gallery={gallery}
+                footer={footer}
+                socials={socials}
+            />
+        </ >
     )
 }

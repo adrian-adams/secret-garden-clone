@@ -1,6 +1,8 @@
 'use client'
 // React
 import React, { useState } from 'react'
+// NextJS
+import Image from 'next/image'
 // Components
 import {
     Dialog,
@@ -12,23 +14,33 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/button';
+// Lucide
+import { CircleX } from 'lucide-react';
 
 export default function Modal({ open, onOpenChange, trigger, modalTitle, modalText, children }) {
+    const bgImage = 'https://eu-west-2.graphassets.com/cmk70usra0h7o07mj3leebcq2/cmmrrq955p3ts07l5wrjepoid';
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogTrigger asChild>
                 {trigger}
             </DialogTrigger>
-            <DialogContent className={`bg-[url('https://eu-west-2.graphassets.com/cmk70usra0h7o07mj3leebcq2/cmmlznkd0ct9o07mm2zoumclu')] bg-cover bg-no-repeat bg-center sm:max-w-md bg-(--sg-olive) border-4 border-white `}>
-                <div className={`backdrop-blur-2xl p-4 rounded-sm space-y-4`}>
+            <DialogContent className={`sm:max-w-md bg-(--sg-olive) border-4 border-white`}>
+                <Image
+                    src={bgImage}
+                    alt="Secret Garden"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className={`object-fit rounded-md`}
+                />
+                <div className={`bg-white z-10 p-4 rounded-sm space-y-4 `}>
                     <DialogHeader>
                         <div className={`flex flex-row justify-between items-center`}>
                             <DialogTitle className={`sg-font-large`}>{modalTitle}</DialogTitle>
                             <DialogClose asChild>
-                                <Button variant="sg_drawer_close" font="sm" size="sm">
-                                    X
+                                <Button variant="sg_secondary" size="sm">
+                                    <CircleX />
                                 </Button>
                             </DialogClose>
                         </div>
@@ -40,7 +52,6 @@ export default function Modal({ open, onOpenChange, trigger, modalTitle, modalTe
                         {children}
                     </DialogFooter>
                 </div>
-
             </DialogContent>
         </Dialog>
     )

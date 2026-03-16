@@ -19,9 +19,6 @@ import AboutUs from "@/components/layout/about-us";
 import Heading from "@/components/layout/heading";
 import Teaser from "@/components/layout/teaser";
 import StoreLocator from "@/components/store-locator/server/store-locator";
-import StoreLocator from "@/components/store-locator/store-locator";
-
-import StoreLocator from "@/components/store-locator/server/store-locator";
 import SGMarquee from "@/components/custom/sg-marquee";
 
 export default async function Home() {
@@ -34,83 +31,62 @@ const teaserData = await fetchHygraph(teaserQuery);
 const dataTeaser = teaserData.teasers;
 
 return (
-  <>
-  
-  <main className="flex flex-col gap-14 pb-20">
-
-    <Hero 
-      bg_desktop={headerData.headers?.[0]?.desktop.url}
-      bg_mobile={headerData.headers?.[0]?.mobile.url}
-      alt="Secret Garden"
-      heading="New Arrivals" 
-      text="Our new collection of plants delivered to your door" 
-    >
+    <>
       <div>
-        <Button variant="sg_primary" width='no'>
-          Shop Now
-        </Button>
+        <Hero 
+            bg_desktop={headerData.headers?.[0]?.desktop.url}
+            bg_mobile={headerData.headers?.[0]?.mobile.url}
+            alt="Secret Garden"
+            heading="New Arrivals" 
+            text="Our new collection of plants delivered to your door" 
+          >
+          <div>
+            <Button variant="sg_primary" width='no'>
+              Shop Now
+            </Button>
+          </div>
+        </Hero>
+        <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
       </div>
-    </Hero>
-
-  <>
-  <div>
-    <Hero 
-
-  <>
-  <div>
-    <Hero 
-
-        bg_desktop={headerData.headers?.[0]?.desktop.url}
-        bg_mobile={headerData.headers?.[0]?.mobile.url}
-        alt="Secret Garden"
-        heading="New Arrivals" 
-        text="Our new collection of plants delivered to your door" 
-      >
-        <div>
-          <Button variant="sg_primary" width='no'>
-            Shop Now
-          </Button>
-        </div>
-      </Hero>
-      <SGMarquee content={["Snake", "Plant—Monstera—Parlor", "Palm—Ficus", "Snake", "Plant—Monstera—Parlor", "Palm—Ficus"]} />
-  </div>
-    
-    <section>
-      <AboutUs />
-    </section>
-
-    <section className="w-full mx-auto">
-      <CarouselSlider />
-    </section>
-    
-    <section>
-      <Heading title="Shop Bundles" />
-      <div className="w-full max-w-285 mx-auto">
-        <ProductList tags={"home"} />
-      </div>
-    </section>
-
-    <section>
-      <Heading title="We have an app!" />
-      <Teaser 
-        variant='primary'
-        image={dataTeaser?.[0]?.teaserImage?.url}
-        imageBG={dataTeaser?.[0]?.teaserBackground?.url}
-        imageDecor={dataTeaser?.[0]?.teaserDecoration?.url}
-        preText={dataTeaser?.[0]?.preText}
-        title={dataTeaser?.[0]?.title}
-        buttonText={dataTeaser?.[0]?.buttonText}
-        link={dataTeaser?.[0]?.link}
-        tab={dataTeaser?.[0]?.newTab}
-      />
-    </section>
-    <Separator size="sm" />
-    <section className={`w-full px-0`}>
-      <StoreLocator />
-      <br></br>
       
-    </section>
-    <Separator size="sm" />
-  </>
+      <section>
+        <AboutUs />
+      </section>
+
+      <section className="w-full mx-auto">
+        <CarouselSlider />
+      </section>
+      
+      <section>
+        <Heading title="Shop Bundles" />
+        <div className="w-full max-w-285 mx-auto">
+          <ProductList tags={"home"} />
+        </div>
+      </section>
+
+      <section>
+        <Heading title="We have an app!" />
+        <Teaser 
+          variant='primary'
+          image={dataTeaser?.[0]?.teaserImage?.url}
+          imageBG={dataTeaser?.[0]?.teaserBackground?.url}
+          imageDecor={dataTeaser?.[0]?.teaserDecoration?.url}
+          preText={dataTeaser?.[0]?.preText}
+          title={dataTeaser?.[0]?.title}
+          buttonText={dataTeaser?.[0]?.buttonText}
+          link={dataTeaser?.[0]?.link}
+          tab={dataTeaser?.[0]?.newTab}
+        />
+      </section>
+
+      <Separator size="sm" />
+
+      <section className={`w-full px-0 pt-0 md:pt-10`}>
+        <StoreLocator />
+        <br></br>
+      </section>
+
+      <Separator size="sm" />
+    </>
   )
 }

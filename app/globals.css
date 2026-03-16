@@ -61,6 +61,7 @@
   --sg-green: hsl(169, 56%, 13%);
   --sg-olive: hsl(116, 22%, 86%);
   --sg-lightgreen: hsl(52, 45%, 90%);
+  --sg-ribbon: #EAECC6;
   --sg-locator: hsl(55, 37%, 93%);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -133,94 +134,70 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    font-family: 'League Spartan',  sans-serif;
   }
+
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
-    @apply bg-background text-foreground;
-    font-family: 'Clash Grotesk', sans-serif;
-=======
-    @apply bg-background text-foreground overflow-x-hidden;
+    @apply bg-background overflow-x-hidden z-50;
     /* font-family: 'Clash Grotesk', sans-serif; */
   }
 
-  section:not(:first-child) {
-    @apply bg-background text-foreground overflow-x-hidden;
-    /* font-family: 'Clash Grotesk', sans-serif; */
-  }
-
-  main {
-    @apply flex flex-col gap-6 md:gap-12;
-  }
-
-  footer {
-    h1 {
-      @apply text-green-500;
-    }
-
-    h2 {
-      @apply text-blue-500;
-    }
-
-    h3 {
-      @apply text-yellow-500;
-      font-size: clamp(1rem, 5vw, 1.5rem);
-    }
-
-    h4 {
-      @apply text-purple-500;
-    }
-
-    h5 {
-      @apply text-pink-500;
-    }
-
-    h6 {
-      @apply text-gray-500;
-    }
-
-    p, a {
-      font-size: clamp(0.875rem, 5vw, 1.25rem);
-    }
-
-    li {
-      @apply text-indigo-500;
-
-    }
-
-    span {
-      @apply text-amber-500;
-    }
-  }
-
+  /* section:not(:last-child) {
+    @apply px-6 w-full lg:w-10/12 mx-auto;
+  } */
+  
   section {
     @apply px-6 w-full lg:w-10/12 mx-auto;
   }
 
-  /* Text */
+  main {
+    @apply space-y-6 md:space-y-12;
 
-  h1 {
-    @apply font-bold leading-snug;
-    font-size: clamp(2.5rem, 5vw, 2.5rem);
-  }
+    h1 {
+      @apply font-bold leading-snug;
+      font-size: clamp(2.5rem, 5vw, 2.5rem);
+    }
 
-  h2 {
-    @apply font-bold leading-snug;
-    font-size: clamp(2rem, 5vw, 2.25rem);
-  }
+    h2 {
+      @apply font-bold leading-snug;
+      font-size: clamp(2rem, 5vw, 2.25rem);
+    }
 
-  h3{
-    @apply font-bold leading-snug;
-    font-size: clamp(1.5rem, 5vw, 1.5 rem) !important;
-  }
+    h3{
+      @apply font-bold leading-snug;
+      font-size: clamp(1rem, 5vw, 1.5rem) !important;
+    }
 
-  li {
-    font-size: clamp(0.875rem, 5vw, 1.35rem);
+    li {
+      font-size: clamp(0.875rem, 5vw, 1.35rem);
+    }
   }
 
   input:-webkit-autofill {
     -webkit-box-shadow: transparent;
     -webkit-box-color: white;
   }
+
+  footer {
+    h2 {
+      @apply font-bold leading-snug;
+      font-size: clamp(2rem, 5vw, 2.25rem);
+    }
+
+    h3{
+      @apply font-bold leading-snug;
+      font-size: clamp(1rem, 5vw, 1.5rem) !important;
+    }
+
+    p {
+      font-size: clamp(0.875rem, 5vw, 1.25rem);
+    }
+
+    ul li {
+      font-size: clamp(0.875rem, 5vw, 1.15rem);
+    }
+  }
+
 }
 
 @layer utilities {
@@ -294,6 +271,26 @@
         hover:after:scale-x-100 
         uppercase 
         cursor-pointer
+  }
+
+  .sg-badge-green {
+    @apply w-6 h-6 mx-2 text-lg flex justify-center rounded-[50%] bg-green-950 text-white font-bold;
+  }
+
+  .sg-bg-1 {
+    background: #D4E3D3;
+    background: #FFF;
+    background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(212, 227, 211, 1) 100%);
+    background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(212, 227, 211, 1) 100%);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 5%, rgba(212, 227, 211, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFFFFF", endColorstr="#D4E3D3", GradientType=0);
+  }
+
+  .sg-bg-image-spot {
+    background-image: url('https://eu-west-2.graphassets.com/cmk70usra0h7o07mj3leebcq2/cmmp9ju7tjozm07ml150hftd7');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 

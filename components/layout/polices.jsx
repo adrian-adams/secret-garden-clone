@@ -9,10 +9,10 @@ import { RichText } from '@graphcms/rich-text-react-renderer';
 
 export default function Polices({ title, copy }) {
     return (
-        <div>
+        <>
             <div className={`relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10`}>
-                <div className={`md:sticky top-35 h-fit col-span-1`}>
-                    <h1 className='text-4xl font-extrabold border-b-4 border-(--sg-olive) mb-4 py-2'>
+                <div className={`md:sticky top-20 h-fit col-span-1`}>
+                    <h1 className='text-4xl font-extrabold border-b-4 border-(--sg-olive) mb-4 md:pt-8'>
                         {title}
                     </h1>
                 </div>
@@ -62,7 +62,6 @@ export default function Polices({ title, copy }) {
                 </div>
             </div>
             <Separator size="md" bg="olive" />
-        </div>
-
+        </>
     )
 }

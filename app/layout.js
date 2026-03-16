@@ -1,22 +1,15 @@
+import "./globals.css";
+// Fonts
+import { Geist, Geist_Mono } from "next/font/google";
+import { League_Spartan } from "next/font/google";
 // API
 import { fetchHygraph } from "@/api/hygraph";
 // GraphQL Queries
 import { logoQuery } from "@/gql-queries/logo";
 // Components
-import Navigation from "@/components/navigation/navigation";
+import NavigationMenu from "@/components/navigation/server/navigation";
 import CartProvider from '@/components/products/client/cart-provider';
 import Footer from "@/components/footer/server/footer";
-// (Drawer not needed here)
-
-// Fonts
-import { Geist, Geist_Mono } from "next/font/google";
-// Components
-import Navigation from "@/components/navigation/server/navigation";
-import CartProvider from '@/components/products/client/cart-provider';
-import Footer from "@/components/footer/server/footer";
-// Fonts
-import { League_Spartan } from "next/font/google";
-import "./globals.css";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
@@ -36,13 +29,9 @@ export default async function RootLayout({ children }) {
   const logoImg = data.brandLogos?.[0]?.logo.url;
 
   return (
-    <html lang="en">
-      {/* <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> */}
-      <body>
-        <Navigation logo={logoImg} />
     <html lang="en" className={leagueSpartan.className}>
       <body className={`font-sans`}>
-        <Navigation />
+        <NavigationMenu />
         <CartProvider />
         <main> 
           {children}
@@ -50,5 +39,5 @@ export default async function RootLayout({ children }) {
         <Footer />
       </body>
     </html>
-  );
+  )
 }
