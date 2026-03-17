@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { League_Spartan } from "next/font/google";
 // API
 import { fetchHygraph } from "@/api/hygraph";
+// Vercel
+import { Analytics } from "@vercel/analytics/next"
 // GraphQL Queries
 import { logoQuery } from "@/gql-queries/logo";
 // Components
@@ -22,6 +24,9 @@ export const metadata = {
   name: { viewport: "width=device-width, initial-scale=1",},
   title: "Secret Garden",
   description: "Our new collection of plants delivered to your door",
+  icons: {
+    icon: 'https://eu-west-2.graphassets.com/cmk70usra0h7o07mj3leebcq2/cmmv4y8rmzdfm07lc54hm0fcy'
+  }
 };
 
 export default async function RootLayout({ children }) {
@@ -31,8 +36,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className={leagueSpartan.className}>
       <body className={`font-sans`}>
+        <Analytics />
         <NavigationMenu />
-        <CartProvider />
+        {/* <CartProvider /> */}
         <main> 
           {children}
         </main>

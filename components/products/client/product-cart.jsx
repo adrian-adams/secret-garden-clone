@@ -49,21 +49,6 @@ export default function Cart() {
 
     const cartBG = 'https://eu-west-2.graphassets.com/cmk70usra0h7o07mj3leebcq2/cmmru8sd7t41q07mlqiz36uu2';
 
-    useGSAP(() => {
-        gsap.from(container.current, {
-            scrollTrigger: {
-                trigger: container.current,
-                toggleActions: "play pause resume reset",
-                top: 'top top'
-            },
-            stagger: 0.1,
-            xPercent: 100,
-            opacity: 0,
-            duration: 0.5,
-            ease: 'power2.inOut'
-        })
-    }, { scope: container });
-
     return (
         <Drawer direction="right" open={openCart} onOpenChange={toggleCart}>
             <DrawerContent className={`bg-gray-200`}>
