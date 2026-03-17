@@ -46,24 +46,27 @@ export const createFadeIn = (options = {}) => ({
     ...options
 });
 
-export const createFadeInScrollX = (trigger ,direction = 'top', options = {}) => ({
+export const createFadeInScrollX = (trigger, direction = 'left', options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
-        toggleActions: "play pause resume reset"
+        toggleActions: "play pause resume reset",
+        scrub: true,
     },
-    xPercent: direction === 'top' ? -100 : 100,
+    xPercent: direction === 'left' ? -100 : 100,
     opacity: 0,
     duration: 0.6,
     ease: 'power2.out',
     ...options
 });
 
-export const createFadeInScrollY = (trigger, direction = 'left', options = {}) => ({
+export const createFadeInScrollY = (trigger, direction = 'top', options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
-        toggleActions: "play pause resume reset"
+        toggleActions: "play pause resume reset",
+        // markers: true
+        // scrub: true,
     },
-    yPercent: direction === 'left' ? -100 : 100,
+    yPercent: direction === 'top' ? -100 : 100,
     opacity: 0,
     duration: 0.6,
     ease: 'power2.out',
@@ -94,7 +97,7 @@ let splitText = new SplitText(container.current, {
 
 // export const gsapFrom = (direction = ['from, to'], animation) => gsap.direction(trigger, gsapAnimation);
 
-export const createCharFadeInScrollX = (trigger, options = {}, mark = 'mark') => ({
+export const createCharFadeInScrollX = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
         toggleActions: "play pause resume reset"
@@ -104,7 +107,6 @@ export const createCharFadeInScrollX = (trigger, options = {}, mark = 'mark') =>
     duration: 0.5,
     stagger: 0.05,
     ease: 'power2.out',
-    markers: mark === 'mark' ? true : false,
     ...options
 });
 
@@ -130,11 +132,10 @@ export const createWordFadeInX = (options = {}) => ({
     ...options
 });
 
-export const createWordFadeInY = (trigger, options = {}, mark) => ({
+export const createWordFadeInY = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
         toggleActions: "play pause resume reset",
-        markers: markers === mark ? true : false
     },
     y: 20,
     duration: 0.4,

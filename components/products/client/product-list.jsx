@@ -4,11 +4,12 @@ import React, { useRef } from "react";
 // GSAP
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createFadeInScrollY } from "@/gsap-animations/custom-gsap";
 //Components
 import ProductCard from "@/components/products/client/product-card";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function ProductListClient({ tags, mapData }) {
     const productFilter = tags ?
@@ -18,18 +19,7 @@ export default function ProductListClient({ tags, mapData }) {
     const container = useRef();
 
     useGSAP(() => {
-        gsap.from(".gsap-card", {
-            scrollTrigger: {
-                trigger: container.current,
-                toggleActions: "play pause resume reset",
-                // start: "top 80%",
-            },
-            y: 100,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power2.out",
-        })
+        gsap.from(`.gsap-card`, createFadeInScrollY(container.current, 'bottom', { stagger: 0.1 }))
     }, { scope: container })
 
     return (

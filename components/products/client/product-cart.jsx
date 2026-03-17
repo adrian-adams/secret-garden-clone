@@ -78,9 +78,9 @@ export default function Cart() {
                 />
                 <div className={`p-4 flex flex-col gap-4 justify-between h-screen z-10`}>
                     <DrawerHeader className={`flex flex-row justify-between items-center gap-2 pb-2 border-b border-black backdrop-blur-sm`}>
-                        <DrawerTitle>
+                        <DrawerTitle className={`sg-font-xlarge`}>
                             {cartItems.length > 0 ? (
-                                <span className={`sg-font-xlarge flex flex-row items-center justify-center`}>
+                                <span className={`flex flex-row items-center justify-center`}>
                                     Cart
                                     <span className={`sg-font-small sg-badge-green `}>
                                         {cartItems.length}

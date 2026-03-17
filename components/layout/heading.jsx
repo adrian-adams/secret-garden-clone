@@ -14,37 +14,18 @@ import { createCharFadeInY } from '@/gsap-animations/custom-gsap';
 gsap.registerPlugin(useGSAP, ScrollToPlugin, SplitText, ScrollTrigger);
 
 export default function Heading({ title }) {
-    // const refreshCount = Date.now();
-    // console.log("Page refresh: ", refreshCount);
-    // const [counter, setCounter] = useState(1);
     const pathname = usePathname();
     const container = useRef();
 
-    // useEffect(() => {
-    //     setCounter(counter + 1);
-    //     console.log("counter: ", pathname + " " + counter);
-    // }, [pathname]);
-
     useGSAP(() => {
-        // ScrollTrigger.getAll().forEach(trigger => {
-        //     trigger.kill();
-        // });
-
         let splitText = new SplitText(container.current, {
             type: "chars, words"
         });
+        gsap.from(splitText.words,
+            createCharFadeInY(container.current, { stagger: 0.1 })
+        );
 
-        setTimeout(() => {
-            gsap.from(splitText.words,
-                createCharFadeInY(container.current)
-            );
-            ScrollTrigger.refresh();
-        }, 50);
-
-        // return () => {
-        //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        // }
-
+        ScrollTrigger.refresh();
     }, [pathname]);
 
     return (
