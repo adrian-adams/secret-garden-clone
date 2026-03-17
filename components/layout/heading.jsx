@@ -21,9 +21,12 @@ export default function Heading({ title }) {
         let splitText = new SplitText(container.current, {
             type: "chars, words"
         });
-        gsap.from(splitText.words,
-            createCharFadeInY(container.current, { stagger: 0.1 })
-        );
+
+        setTimeout(() => {
+            gsap.from(splitText.words,
+                createCharFadeInY(container.current, { stagger: 0.1 })
+            );
+        }, 25);
 
         ScrollTrigger.refresh();
     }, [pathname]);

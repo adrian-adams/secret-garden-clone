@@ -38,7 +38,7 @@ export default async function RootLayout({ children }) {
       <body className={`font-sans`}>
         <Analytics />
         <NavigationMenu />
-        {/* <CartProvider /> */}
+        <CartProvider />
         <main> 
           {children}
         </main>
