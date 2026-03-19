@@ -50,6 +50,7 @@ export default function ProductCard({ data }) {
                             className={`${baseStyles} ${hover ? 'opacity-0' : 'opacity-100'}`}
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            loading='lazy'
                         />
                     )}
 
