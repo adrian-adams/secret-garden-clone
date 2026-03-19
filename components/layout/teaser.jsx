@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { createCharFadeInScrollX, createFadeInScrollY } from '@/gsap-animations/custom-gsap';
+import { createCharFadeInScrollX, createFadeInScroll } from '@/gsap-animations/custom-gsap';
 import { Button } from "@/components/ui/button"
 
 gsap.registerPlugin(ScrollToPlugin, SplitText, ScrollTrigger);
@@ -39,11 +39,11 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
 
         // PreText
         gsap.from(pretextRef.current,
-            createFadeInScrollY(pretextRef.current, 'top')
+            createFadeInScroll(pretextRef.current, { y: -75 })
         );
 
         // Button
-        gsap.from(btnRef.current, createFadeInScrollY(btnRef.current));
+        gsap.from(btnRef.current, createFadeInScroll('.gsap-button', { y: 75 }));
 
         // Leaf Top Right
         gsap.to(leafTrRef.current, {
@@ -148,7 +148,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
                             {title}
                         </h2>
                         <div ref={btnRef}>
-                            <Button variant="sg_primary">
+                            <Button variant="sg_primary" className={`gsap-button`}>
                                 Download Now
                             </Button>
                         </div>

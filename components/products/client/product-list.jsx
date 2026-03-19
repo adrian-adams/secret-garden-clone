@@ -1,15 +1,16 @@
 'use client'
 // React
 import React, { useRef } from "react";
+// NextJS
+import { usePathname } from 'next/navigation'
 // GSAP
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { createFadeInScrollY } from "@/gsap-animations/custom-gsap";
+import { createFadeInScroll } from "@/gsap-animations/custom-gsap";
 //Components
 import ProductCard from "@/components/products/client/product-card";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 export default function ProductListClient({ tags, mapData }) {
     const productFilter = tags ?
@@ -17,10 +18,11 @@ export default function ProductListClient({ tags, mapData }) {
         mapData;
 
     const container = useRef();
+    const pathname = usePathname();
 
     useGSAP(() => {
-        gsap.from(`.gsap-card`, createFadeInScrollY(container.current, 'bottom', { stagger: 0.1 }))
-    }, { scope: container })
+        gsap.from('.gsap-card', createFadeInScroll('.gsap-card', { y: 40, stagger: 0.1 }))
+    }, { scope: container, dependencies: [pathname] });
 
     return (
         <>

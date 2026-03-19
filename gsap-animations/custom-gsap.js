@@ -46,27 +46,27 @@ export const createFadeIn = (options = {}) => ({
     ...options
 });
 
-export const createFadeInScrollX = (trigger, direction = 'left', options = {}) => ({
-    scrollTrigger: {
-        trigger: trigger,
-        toggleActions: "play pause resume reset",
-        scrub: true,
-    },
-    xPercent: direction === 'left' ? -100 : 100,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'power2.out',
-    ...options
-});
+// export const createFadeInScrollX = (trigger, direction = 'left', options = {}) => ({
+//     scrollTrigger: {
+//         trigger: trigger,
+//         toggleActions: "play pause resume reset",
+//         scrub: true,
+//     },
+//     xPercent: direction === 'left' ? -100 : 100,
+//     opacity: 0,
+//     duration: 0.6,
+//     ease: 'power2.out',
+//     ...options
+// });
 
-export const createFadeInScrollY = (trigger, direction = 'top', options = {}) => ({
+export const createFadeInScroll = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
         toggleActions: "play pause resume reset",
-        // markers: true
+        start: 'top 80%',
+        // markers: true,
         // scrub: true,
     },
-    yPercent: direction === 'top' ? -100 : 100,
     opacity: 0,
     duration: 0.6,
     ease: 'power2.out',

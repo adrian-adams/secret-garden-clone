@@ -29,7 +29,7 @@ export default function Heading({ title }) {
         }, 25);
 
         ScrollTrigger.refresh();
-    }, [pathname]);
+    }, { scope: container, dependencies: [pathname] });
 
     return (
         <div className='border-b-4 border-(--sg-olive) mb-4' ref={container}>
