@@ -1,6 +1,6 @@
 'use client'
 // React
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 // NextJS
 import { usePathname } from 'next/navigation'
 // GSAP
@@ -14,30 +14,36 @@ import ProductCard from "@/components/products/client/product-card";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function ProductListClient({ tags, mapData }) {
+    const [isHydrated, setIsHydrated] = useState(false);
+    const container = useRef();
+    const pathname = usePathname();
+
     const productFilter = tags ?
         mapData.filter((item) => item.tags?.includes(tags)) :
         mapData;
 
-    const container = useRef();
-    const pathname = usePathname();
+    useEffect(() => {
+        setIsHydrated(true)
+    }, []);
 
     useGSAP(() => {
-        ScrollTrigger.getAll().forEach(trigger => {
-            if (trigger.trigger?.classList?.contains('gsap-card')) {
-                trigger.kill();
-            }
-        });
+        if (!isHydrated) return;
+        // ScrollTrigger.getAll().forEach(trigger => {
+        //     if (trigger.trigger?.classList?.contains('gsap-card')) {
+        //         trigger.kill();
+        //     }
+        // });
 
         gsap.from('.gsap-card', createFadeInScroll('.gsap-card', { y: 40, stagger: 0.1 }))
 
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => {
-                if (trigger.trigger?.classList?.contains('gsap-card')) {
-                    trigger.kill();
-                }
-            });
-        };
-    }, { scope: container, dependencies: [pathname] });
+        // return () => {
+        //     ScrollTrigger.getAll().forEach(trigger => {
+        //         if (trigger.trigger?.classList?.contains('gsap-card')) {
+        //             trigger.kill();
+        //         }
+        //     });
+        // };
+    }, { scope: container, dependencies: [isHydrated] });
 
     return (
         <>
