@@ -18,6 +18,8 @@ export default function Heading({ title }) {
     const container = useRef();
 
     useGSAP(() => {
+        // ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
         let splitText = new SplitText(container.current, {
             type: "chars, words"
         });
@@ -29,6 +31,9 @@ export default function Heading({ title }) {
         }, 25);
 
         ScrollTrigger.refresh();
+        // return () => {
+        //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        // };
     }, { scope: container, dependencies: [pathname] });
 
     return (

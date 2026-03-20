@@ -7,10 +7,11 @@ import { usePathname } from 'next/navigation'
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { createFadeInScroll } from "@/gsap-animations/custom-gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 //Components
 import ProductCard from "@/components/products/client/product-card";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function ProductListClient({ tags, mapData }) {
     const productFilter = tags ?
@@ -21,7 +22,21 @@ export default function ProductListClient({ tags, mapData }) {
     const pathname = usePathname();
 
     useGSAP(() => {
+        ScrollTrigger.getAll().forEach(trigger => {
+            if (trigger.trigger?.classList?.contains('gsap-card')) {
+                trigger.kill();
+            }
+        });
+
         gsap.from('.gsap-card', createFadeInScroll('.gsap-card', { y: 40, stagger: 0.1 }))
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => {
+                if (trigger.trigger?.classList?.contains('gsap-card')) {
+                    trigger.kill();
+                }
+            });
+        };
     }, { scope: container, dependencies: [pathname] });
 
     return (
