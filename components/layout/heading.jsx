@@ -9,7 +9,7 @@ import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { createCharFadeInY, gsapHydrate } from '@/gsap-animations/custom-gsap';
+import { createWordFadeInY, gsapHydrate } from '@/gsap-animations/custom-gsap';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -29,7 +29,7 @@ export default function Heading({ title }) {
         });
 
         setTimeout(() => {
-            gsap.from(splitText.words, createCharFadeInY(container.current, { stagger: 0.1 }));
+            gsap.from(splitText.words, createWordFadeInY(container.current, { stagger: 0.1 }));
         }, 100);
 
 

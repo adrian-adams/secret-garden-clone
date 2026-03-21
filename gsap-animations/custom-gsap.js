@@ -68,7 +68,7 @@ export const createFadeIn = (options = {}) => ({
 export const createFadeInScroll = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
-        toggleActions: "play pause resume reset",
+        toggleActions: "play none none reset",
         start: 'top 80%',
         // markers: true,
         // scrub: true,
@@ -119,7 +119,7 @@ export const createCharFadeInScrollX = (trigger, options = {}) => ({
 export const createCharFadeInY = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
-        toggleActions: "play pause resume reset"
+        toggleActions: "play none none reset"
     },
     opacity: 0,
     y: 20,
@@ -141,7 +141,7 @@ export const createWordFadeInX = (options = {}) => ({
 export const createWordFadeInY = (trigger, options = {}) => ({
     scrollTrigger: {
         trigger: trigger,
-        toggleActions: "play pause resume reset",
+        toggleActions: "play none none reset",
     },
     y: 20,
     duration: 0.4,
