@@ -39,7 +39,7 @@ export default async function RootLayout({ children }) {
     <html lang="en" className={leagueSpartan.className}>
       <head>
          <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-BYBRQ1J6EN`}
           strategy="afterInteractive"
         />
         <Script 
@@ -50,7 +50,7 @@ export default async function RootLayout({ children }) {
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
-                    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                    gtag('config', 'G-BYBRQ1J6EN');
                 `
             }}
         />
@@ -63,8 +63,6 @@ export default async function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
-
-       
       </body>
     </html>
   )
