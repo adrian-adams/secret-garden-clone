@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Image from "next/image"
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -14,6 +14,8 @@ gsap.registerPlugin(ScrollToPlugin, SplitText, ScrollTrigger);
 const widthStyles = 'w-50 md:w-8/12'
 
 export default function Teaser({ image, imageBG, imageDecor, preText, title, buttonText, link, tab, variant = 'primary' }) {
+    const [isHydrated, setIsHydrated] = useState(false);
+
     const container = useRef(null);
     const titleRef = useRef(null);
     const pretextRef = useRef(null);
@@ -21,6 +23,10 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
     const leafTrRef = useRef(null);
     const leafBlRef = useRef(null);
     const phoneRef = useRef(null);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, [])
 
     const teaserStyles = {
         primary: 'flex flex-col md:flex-row gap-12 md:gap-6 items-center',
@@ -30,6 +36,8 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
     const appliedVariant = teaserStyles[variant] ?? teaserStyles.primary;
 
     useGSAP(() => {
+        if (!isHydrated) return;
+
         // SplitText
         let splitText = new SplitText(titleRef.current, {
             type: "chars, words"
@@ -88,7 +96,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
             splitText.revert();
             ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         }
-    }, { scope: container });
+    }, { scope: container, dependencies: [isHydrated] });
 
     return (
         <div className={`${appliedVariant} relative pt-20 `} ref={container}>
