@@ -9,34 +9,23 @@ import Heading from '@/components/layout/heading';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { createFadeInScroll, gsapHydrate } from '@/gsap-animations/custom-gsap';
+import { createFadeInScroll } from '@/gsap-animations/custom-gsap';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUS() {
     const container = useRef();
     const pathname = usePathname();
-    // const [isHydrated, setIsHydrated] = useState(false);
+    const [isHydrated, setIsHydrated] = useState(false);
 
-    // useEffect(() => {
-    //     setIsHydrated(true);
-    // }, []);
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
 
     useGSAP(() => {
-        // if (!isHydrated) return;
+        if (!isHydrated) return;
         gsap.from(container.current, createFadeInScroll('.gsap-au-text', { y: 100 }));
 
-        // gsap.from(".gsap-au-text", {
-        //     scrollTrigger: {
-        //         trigger: ".gsap-au-text",
-        //         toggleActions: "restart none none none",
-        //         start: "top 90%",
-        //         // markers: true
-        //     },
-        //     y: 100,
-        //     opacity: 0.5,
-        //     duration: 0.75
-        // });
-    }, { scope: container, dependencies: [pathname] });
+    }, { scope: container, dependencies: [pathname, isHydrated] });
 
     return (
         <>
