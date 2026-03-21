@@ -9,34 +9,30 @@ import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { createCharFadeInY } from '@/gsap-animations/custom-gsap';
+import { createCharFadeInY, gsapHydrate } from '@/gsap-animations/custom-gsap';
 
-gsap.registerPlugin(useGSAP, ScrollToPlugin, SplitText, ScrollTrigger);
+gsap.registerPlugin(useGSAP, SplitText);
 
 export default function Heading({ title }) {
     const [isHydrated, setIsHydrated] = useState(false);
     const pathname = usePathname();
     const container = useRef();
 
-    useEffect(() => {
-        setIsHydrated(true)
-    }, []);
+    gsapHydrate(useEffect, setIsHydrated, true);
 
     useGSAP(() => {
         if (!isHydrated) return;
         // ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
+        ScrollTrigger.refresh();
         let splitText = new SplitText(container.current, {
             type: "chars, words"
         });
 
         setTimeout(() => {
-            gsap.from(splitText.words,
-                createCharFadeInY(container.current, { stagger: 0.1 })
-            );
-        }, 0);
+            gsap.from(splitText.words, createCharFadeInY(container.current, { stagger: 0.1 }));
+        }, 100);
 
-        ScrollTrigger.refresh();
+
         // return () => {
         //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         // };

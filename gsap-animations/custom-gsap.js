@@ -39,6 +39,12 @@ gsap.registerPlugin(
     EasePack
 );
 
+export function gsapHydrate(reactEffect, stateValue, stateBoolean) {
+    reactEffect(() => {
+        stateValue(stateBoolean)
+    }, []);
+}
+
 export const createFadeIn = (options = {}) => ({
     opacity: 0,
     duration: 0.6,

@@ -7,13 +7,13 @@ function PCImage({ image, title, className }) {
     return (
         <>
             {image && (
-                <div className={`relative h-40 sm:h-80 md:h-60 ${className || ''}`}>
+                <div className={`relative h-40 sm:h-50 md:h-60 ${className || ''}`}>
                     <Image
                         src={image}
                         alt={title}
-                        className={`object-cover`}
+                        className={`object-cover p-1.5 md:p-0.5`}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
                     // width={100}
                     // height={100}
                     />
@@ -32,7 +32,7 @@ export default function ProductImages({ data }) {
     ];
 
     return (
-        <div className={`relative grid grid-cols-2 md:grid-cols-1 gap-4`}>
+        <div>
             {/* <ul >
               {images?.map((img) => (
                 <li key={data.thumbnail?.id}>
@@ -46,15 +46,17 @@ export default function ProductImages({ data }) {
             <PCImage
                 image={images[0]}
                 title={title}
-                className={`col-span-2 lg:col-span-1`}
+                className={`w-full inline-flex`}
             />
             <PCImage
                 image={images[1]}
                 title={title}
+                className={`w-1/2 md:w-full inline-flex`}
             />
             <PCImage
                 image={images[2]}
                 title={title}
+                className={`w-1/2 md:w-full inline-flex`}
             />
         </div>
     )

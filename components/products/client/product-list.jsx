@@ -1,15 +1,16 @@
 'use client'
 // React
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, Suspense } from "react";
 // NextJS
 import { usePathname } from 'next/navigation'
 // GSAP
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { createFadeInScroll } from "@/gsap-animations/custom-gsap";
+import { createFadeInScroll, gsapHydrate } from "@/gsap-animations/custom-gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 //Components
 import ProductCard from "@/components/products/client/product-card";
+import { Spinner } from "@/components/ui/spinner";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -22,9 +23,7 @@ export default function ProductListClient({ tags, mapData }) {
         mapData.filter((item) => item.tags?.includes(tags)) :
         mapData;
 
-    useEffect(() => {
-        setIsHydrated(true)
-    }, []);
+    gsapHydrate(useEffect, setIsHydrated, true);
 
     useGSAP(() => {
         if (!isHydrated) return;
@@ -50,9 +49,12 @@ export default function ProductListClient({ tags, mapData }) {
             {productFilter?.length > 0 &&
                 <ul ref={container} className="sg-grid">
                     {productFilter.map((item) => (
-                        <li key={item.id} className={`gsap-card`}>
-                            <ProductCard data={item} />
-                        </li>
+                        <Suspense key={item.id} fallback={<Spinner />}>
+                            <li key={item.id} className={`gsap-card`}>
+                                <ProductCard data={item} />
+                            </li>
+                        </Suspense>
+
                     ))}
                 </ul>
             }

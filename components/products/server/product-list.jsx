@@ -1,5 +1,7 @@
+'use server'
 // API
 import { fetchHygraph } from "@/api/hygraph";
+// NextJS
 // Queries
 import { productQuery } from "@/gql-queries/products";
 //Components

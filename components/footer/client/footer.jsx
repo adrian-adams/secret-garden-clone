@@ -1,7 +1,7 @@
 
 'use client'
 // React
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 // NextJS
 import { usePathname } from 'next/navigation';
 // GSAP
@@ -19,6 +19,7 @@ import FooterContact from '../client/about/footer-contact';
 import FooterSocials from '../client/about/footer-socials';
 import FooterYear from '../client/end/footer-year';
 import FooterPolicies from '../client/end/footer-policies';
+import { Spinner } from '@/components/ui/spinner';
 
 // gsap.registerPlugin(useGSAP, ScrollToPlugin, SplitText, ScrollTrigger);
 
