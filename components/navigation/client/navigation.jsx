@@ -51,7 +51,7 @@ export default function NavigationMenu({ logo }) {
     }, [pathname]);
 
     return (
-        <header className={`fixed right-0 left-0 z-50 backdrop-blur-3xl mask-[linear-gradient(to_bottom,black_80%,transparent)]`} ref={container}>
+        <div className={`fixed right-0 left-0 z-50 backdrop-blur-3xl mask-[linear-gradient(to_bottom,black_80%,transparent)]`} ref={container}>
             <nav className={`gsap-nav relative m-4 p-4 rounded-3xl text-black bg-(--sg-lightgreen) overflow-hidden`}>
                 <div className={`flex flex-row justify-between items-center`}>
                     <div className={`hover:scale-115 transition-all duration-500 ease-in-out`}>
@@ -131,6 +131,6 @@ export default function NavigationMenu({ logo }) {
                     </li>
                 </ul>
             </nav>
-        </header>
+        </div>
     )
 }

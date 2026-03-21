@@ -37,16 +37,8 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en" className={leagueSpartan.className}>
-      <body className={`font-sans`}>
-        <Analytics />
-        <NavigationMenu />
-        <CartProvider />
-        <main> 
-          {children}
-        </main>
-        <Footer />
-
-        <Script
+      <head>
+         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"
         />
@@ -62,6 +54,17 @@ export default async function RootLayout({ children }) {
                 `
             }}
         />
+      </head>
+      <body className={`font-sans`}>
+        <Analytics />
+        <NavigationMenu />
+        <CartProvider />
+        <main> 
+          {children}
+        </main>
+        <Footer />
+
+       
       </body>
     </html>
   )
