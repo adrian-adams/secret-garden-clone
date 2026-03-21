@@ -20,8 +20,7 @@ export default function AboutUS() {
             scrollTrigger: {
                 trigger: ".gsap-au-text",
                 toggleActions: "restart none none none",
-                start: "top bottom",
-                end: "bottom top",
+                start: "top 90%",
                 // markers: true
             },
             y: 100,
