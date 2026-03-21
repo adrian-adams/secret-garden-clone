@@ -1,8 +1,8 @@
 'use client'
 // React
 import React, { useRef, useEffectLayout } from 'react'
-// NextJs
-import Image from 'next/image';
+// NextJS
+import { usePathname } from 'next/navigation';
 // Components
 import Heading from '@/components/layout/heading';
 // GSAP
@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUS() {
     const container = useRef();
+    const pathname = usePathname();
 
     useGSAP(() => {
         gsap.from(".gsap-au-text", {
@@ -40,7 +41,7 @@ export default function AboutUS() {
         //     opacity: 1,
         //     duration: 0.75
         // })
-    }, { scope: container });
+    }, { scope: container, dependencies: [pathname] });
 
     return (
         <div ref={container}>
