@@ -1,6 +1,6 @@
 'use client'
 // React
-import React, { useRef, useEffectLayout } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 // NextJS
 import { usePathname } from 'next/navigation';
 // Components
@@ -9,50 +9,46 @@ import Heading from '@/components/layout/heading';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { createFadeInScroll, gsapHydrate } from '@/gsap-animations/custom-gsap';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutUS() {
     const container = useRef();
     const pathname = usePathname();
+    // const [isHydrated, setIsHydrated] = useState(false);
+
+    // useEffect(() => {
+    //     setIsHydrated(true);
+    // }, []);
 
     useGSAP(() => {
-        gsap.from(".gsap-au-text", {
-            scrollTrigger: {
-                trigger: ".gsap-au-text",
-                toggleActions: "restart none none none",
-                start: "top 90%",
-                // markers: true
-            },
-            y: 100,
-            opacity: 0.5,
-            duration: 0.75
-        })
+        // if (!isHydrated) return;
+        gsap.from(container.current, createFadeInScroll('.gsap-au-text', { y: 100 }));
 
-        // gsap.from("#gsap-au-text", {
+        // gsap.from(".gsap-au-text", {
         //     scrollTrigger: {
-        //         trigger: "#gsap-au-text",
+        //         trigger: ".gsap-au-text",
         //         toggleActions: "restart none none none",
-        //         start: "top bottom",
-        //         end: "bottom top",
+        //         start: "top 90%",
         //         // markers: true
         //     },
         //     y: 100,
-        //     opacity: 1,
+        //     opacity: 0.5,
         //     duration: 0.75
-        // })
+        // });
     }, { scope: container, dependencies: [pathname] });
 
     return (
-        <div ref={container}>
-            <div className='gsap-au-text'>
-                <Heading title="About Us" />
-                <p className="sg-font-medium">
+        <>
+            <Heading title="About Us" />
+            <div ref={container}>
+                <p className="sg-font-medium gsap-au-text">
                     We are a small plant store with three locations in NYC. Come shop at any of our locations or order plants from the comfort of your couch. labore et dolor magna aliqua. Ut enim ad minim velit, quis nostrud exercitation porttitor.
                     <br />
                     <br />
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris rhoncus aenean vel elit. Tristique nulla aliquet enim tortor at auctor urna mauris commodo.
                 </p>
             </div>
-        </div>
+        </>
     )
 }
