@@ -15,9 +15,9 @@ export default function AboutUS() {
     const container = useRef();
 
     useGSAP(() => {
-        gsap.from("#gsap-au-title", {
+        gsap.from(".gsap-au-text", {
             scrollTrigger: {
-                trigger: "#gsap-au-title",
+                trigger: ".gsap-au-text",
                 toggleActions: "restart none none none",
                 start: "top bottom",
                 end: "bottom top",
@@ -28,24 +28,24 @@ export default function AboutUS() {
             duration: 0.75
         })
 
-        gsap.from("#gsap-au-text", {
-            scrollTrigger: {
-                trigger: "#gsap-au-text",
-                toggleActions: "restart none none none",
-                start: "top bottom",
-                end: "bottom top",
-                // markers: true
-            },
-            y: 100,
-            opacity: 1,
-            duration: 0.75
-        })
+        // gsap.from("#gsap-au-text", {
+        //     scrollTrigger: {
+        //         trigger: "#gsap-au-text",
+        //         toggleActions: "restart none none none",
+        //         start: "top bottom",
+        //         end: "bottom top",
+        //         // markers: true
+        //     },
+        //     y: 100,
+        //     opacity: 1,
+        //     duration: 0.75
+        // })
     }, { scope: container });
 
     return (
         <div ref={container}>
-            <Heading title="About Us" id="gsap-au-title" />
-            <p id="gsap-au-text" className="text-md md:text-2xl">
+            <Heading title="About Us" className="gsap-au-text" />
+            <p className="gsap-au-text text-md md:text-2xl">
                 We are a small plant store with three locations in NYC. Come shop at any of our locations or order plants from the comfort of your couch. labore et dolor magna aliqua. Ut enim ad minim velit, quis nostrud exercitation porttitor.
                 <br></br>
                 <br></br>
