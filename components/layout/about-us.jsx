@@ -44,9 +44,7 @@ export default function AboutUS() {
 
     return (
         <div ref={container}>
-            <div id="gsap-au-title">
-                <Heading title="About Us" />
-            </div>
+            <Heading title="About Us" id="gsap-au-title" />
             <p id="gsap-au-text" className="text-md md:text-2xl">
                 We are a small plant store with three locations in NYC. Come shop at any of our locations or order plants from the comfort of your couch. labore et dolor magna aliqua. Ut enim ad minim velit, quis nostrud exercitation porttitor.
                 <br></br>
