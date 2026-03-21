@@ -10,13 +10,13 @@ export default function StoreOperations({ store }) {
     return (
         <>
             <div className={`mx-auto`}>
-                <ul className={`flex flex-wrap lg:flex-nowrap lg:grid lg:grid-cols-1 xl:grid-cols-2 justify-center gap-0.5 `}>
+                <ul className={`flex flex-wrap lg:flex-nowrap lg:grid lg:grid-cols-1 xl:grid-cols-2 justify-center`}>
                     {store.storeOperations?.map((op) => (
                         <li
                             key={op.id}
-                            className={`flex flex-row  gap-1.5 px-2 py-1.5 sg-font-small
+                            className={`flex flex-row gap-1.5 px-2 py-1.5 sg-font-small
                                                                 ${op.storeDay === currentDay ?
-                                    'text-white bg-black rounded-2xl justify-center' :
+                                    'text-white bg-black rounded-2xl justify-center pb-0.5' :
                                     'text-black'}`
                             }>
                             <span className={`uppercase inline-block font-semibold `}>

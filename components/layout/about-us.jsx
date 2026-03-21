@@ -22,8 +22,15 @@ export default function AboutUS() {
     }, []);
 
     useGSAP(() => {
+
         if (!isHydrated) return;
-        gsap.from(container.current, createFadeInScroll('.gsap-au-text', { y: 100 }));
+
+        // gsap.from(container.current, createFadeInScroll('.gsap-au-text', { y: 100 }));
+
+        gsap.fromTo(container.current,
+            createFadeInScroll('.gsap-au-text', { y: 100, opacity: 0 }),
+            createFadeInScroll('.gsap-au-text', { y: 0, opacity: 1 }),
+        );
 
     }, { scope: container, dependencies: [pathname, isHydrated] });
 

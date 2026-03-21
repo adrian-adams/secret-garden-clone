@@ -51,7 +51,7 @@ export default function Teaser({ image, imageBG, imageDecor, preText, title, but
         );
 
         // Button
-        gsap.from(btnRef.current, createFadeInScroll('.gsap-button', { y: 75 }));
+        gsap.from(btnRef.current, createFadeInScroll('.gsap-button', { y: 40 }));
 
         // Leaf Top Right
         gsap.to(leafTrRef.current, {

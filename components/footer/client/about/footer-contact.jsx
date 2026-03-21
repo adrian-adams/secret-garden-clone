@@ -12,7 +12,7 @@ export default function FooterContact({ footer }) {
     return (
         <div>
             <h3>{footer.contactUs}</h3>
-            <ul className={`text-[5px]! flex flex-col gap-1.5 wrap-break-word`}>
+            <ul className={`flex flex-col gap-1.5 break-all`}>
                 <li className={`${contactUsStyle}`}>
                     <Mail size="16" />
                     <HoverLink>
