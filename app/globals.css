@@ -136,6 +136,9 @@
     @apply border-border outline-ring/50;
     font-family: 'League Spartan',  sans-serif;
   }
+   html {
+    width: 100vw;
+   }
 
   body {
     @apply bg-background overflow-x-hidden z-50 leading-tight;
@@ -208,19 +211,19 @@
   }
 
   .sg-font-xlarge {
-    font-size: clamp(0.75rem, 5vw, 2rem);
+    font-size: clamp(1.25rem, 5vw, 2rem);
   }
 
   .sg-font-large {
-    font-size: clamp(0.75rem, 5vw, 1.75rem);
+    font-size: clamp(1.15rem, 5vw, 1.75rem);
   }
 
   .sg-font-medium {
-    font-size: clamp(0.75rem, 5vw, 1.5rem);
+    font-size: clamp(1.05rem, 5vw, 1.5rem);
   }
 
   .sg-font-small {
-    font-size: clamp(0.75rem, 5vw, 1.15rem);
+    font-size: clamp(0.95rem, 5vw, 1.15rem);
   }
 
   .sg-linkhover::after {

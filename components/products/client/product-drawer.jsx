@@ -46,7 +46,7 @@ export default function ProductDrawer({ data }) {
                     </DrawerClose>
                 </div>
                 <div className={`backdrop-blur-xl p-2 rounded-md`}>
-                    <DrawerTitle className={`flex flex-row justify-between text-2xl pb-1 border-b border-black`}>
+                    <DrawerTitle className={`flex flex-row justify-between items-center text-3xl pb-1 border-b border-black`}>
                         {title}
                         <span className="before:content-['$'] text-black text-2xl">{price}</span>
                     </DrawerTitle>

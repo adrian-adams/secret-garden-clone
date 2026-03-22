@@ -10,7 +10,8 @@ export default function StoreOperations({ store }) {
     return (
         <>
             <div className={`mx-auto`}>
-                <ul className={`flex flex-wrap lg:flex-nowrap lg:grid lg:grid-cols-1 xl:grid-cols-2 justify-center`}>
+                {/* <ul className={`flex flex-wrap lg:flex-nowrap lg:grid lg:grid-cols-1 xl:grid-cols-2 justify-center`}> */}
+                <ul className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-x-2`}>
                     {store.storeOperations?.map((op) => (
                         <li
                             key={op.id}

@@ -6,7 +6,7 @@ export default function FooterYear({ footer }) {
     const currentYear = year.getFullYear();
 
     return (
-        <div>
+        <div className={`px-2`}>
             <p> &#169; {currentYear}</p>
         </div>
     )

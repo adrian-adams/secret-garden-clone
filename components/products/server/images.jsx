@@ -14,6 +14,7 @@ function PCImage({ image, title, className }) {
                         className={`object-cover p-1.5 md:p-0.5`}
                         fill
                         sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
+                        loading='lazy'
                     // width={100}
                     // height={100}
                     />

@@ -104,11 +104,11 @@ export default function NavigationMenu({ logo }) {
                 </div>
                 {/* Mobile */}
                 <ul
-                    className={`flex flex-col justify-center items-center gap-2 md:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'opacity-100 max-h-300 translate-y-0 pt-4' : 'opacity-0 max-h-0 translate-y-0 pointer-events-none'}`}>
+                    className={`flex flex-col justify-center items-center gap-2 md:hidden transition-all duration-500 ease-in-out overflow-hidden ${isMenuOpen ? 'opacity-100 max-h-300 translate-y-0 py-6' : 'opacity-0 max-h-0 translate-y-0 pointer-events-none'}`}>
                     {menuItems?.map((item) => (
                         <li key={item.id}>
                             <Link href={item.href}
-                                className={`sg-font-medium ${linkStyle} ${pathname === item.href
+                                className={`text-2xl ${linkStyle} ${pathname === item.href
                                     ? `${pathStyle}`
                                     : ""}`}>
                                 {item.name}
@@ -116,7 +116,7 @@ export default function NavigationMenu({ logo }) {
                         </li>
                     ))}
                     <li>
-                        <button className={`sg-font-medium`} onClick={toggleCart}>
+                        <button className={`text-2xl`} onClick={toggleCart}>
                             {cartItems.length > 0 ? (
                                 <span className={`flex flex-row items-center`}>
                                     Cart

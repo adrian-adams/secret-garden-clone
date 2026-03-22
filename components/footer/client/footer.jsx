@@ -31,7 +31,7 @@ export default function FooterClient({ services, gallery, footer, socials }) {
                 </section>
                 {/* Year & Pages */}
                 <div className={`bg-black text-white py-6 text-sm`}>
-                    <section className={`flex flex-col md:flex-row justify-between items-center gap-3`}>
+                    <section className={`flex flex-col md:flex-row justify-between items-start gap-3`}>
                         <FooterYear footer={footer} />
                         <FooterPolicies />
                     </section>

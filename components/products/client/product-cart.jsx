@@ -57,16 +57,18 @@ export default function Cart() {
                     alt="Secret Garden"
                     // unoptimized
                     fill
-                    loading="eager"
+                    loading="lazy"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
                     className={`object-cover`}
                 />
                 <div className={`p-4 flex flex-col gap-4 justify-between h-screen z-10`}>
                     <DrawerHeader className={`flex flex-row justify-between items-center gap-2 pb-2 border-b border-black backdrop-blur-sm`}>
-                        <DrawerTitle className={`sg-font-xlarge`}>
+                        <DrawerTitle className={`text-4xl flex flex-row items-center justify-center`}>
                             {cartItems.length > 0 ? (
                                 <span className={`flex flex-row items-center justify-center`}>
-                                    Cart
+                                    <span>
+                                        Cart
+                                    </span>
                                     <span className={`sg-font-small sg-badge-green `}>
                                         {cartItems.length}
                                     </span>
@@ -102,9 +104,9 @@ export default function Cart() {
                                             />
                                         </div>
                                         <div className={`flex flex-col justify-between gap-5 col-span-2 md:col-span-3 px-2`}>
-                                            <div className={`flex flex-col md:flex-row justify-between gap-3`}>
-                                                <h3 className={`text-md md:text-3xl`}>{items.title}</h3>
-                                                <p className={`sg-font-medium`}>${(items.price * items.qty).toFixed(2)}</p>
+                                            <div className={`flex flex-col md:flex-row justify-between items-center gap-3`}>
+                                                <h3 className={`text-md md:text-3xl font-bold`}>{items.title}</h3>
+                                                <p className={`text-md md:text-2xl`}>${(items.price * items.qty).toFixed(2)}</p>
                                             </div>
                                             <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-6 text-sm md:text-lg`}>
                                                 <div className={`flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4`}>
@@ -141,17 +143,18 @@ export default function Cart() {
 
                     <DrawerFooter className={`space-y-4 border-t border-black py-4`}>
                         <div className={`flex flex-row justify-between items-center gap-4`}>
-
                             {/* Checkout Modal */}
                             <SGModal
                                 trigger={
                                     <div>
                                         <Button
                                             variant="sg_primary"
-                                            // size="lg"
                                             font="xl"
+                                            width="full"
                                             disabled={cartItems.length === 0}
-                                        >Checkout</Button>
+                                        >
+                                            Checkout
+                                        </Button>
                                     </div>
                                 }
                                 modalTitle="Checkout unavailable"
@@ -164,7 +167,7 @@ export default function Cart() {
                                     Close
                                 </Button>
                             </SGModal>
-                            <p className={`font-bold sg-font-medium backdrop-blur-2xl rounded-2xl px-4 leading-relaxed`}>Subtotal: ${subtotal.toFixed(2)}</p>
+                            <p className={`font-bold text-xl md:text-2xl backdrop-blur-md rounded-2xl px-4 text-center leading-relaxed`}>Subtotal: ${subtotal.toFixed(2)}</p>
                         </div>
 
                         {/* Clear Cart Modal */}

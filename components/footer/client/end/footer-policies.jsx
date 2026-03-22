@@ -12,21 +12,19 @@ export default function FooterPolicies() {
     ];
 
     return (
-        <div>
-            <ul className={`flex flex-wrap md:flex-row md:flex-nowrap justify-center gap-6`}>
-                {policyPages?.map((page) => (
-                    <li key={page.id} className={`relative not-last:after:content-[''] after:absolute after:-right-3.5 after:w-0.5 not-last:after:h-full after:bg-white`}>
-                        <HoverLink variant="white">
-                            <Link
-                                href={page.href}
-                                title={page.name}
-                            >
-                                {page.name}
-                            </Link>
-                        </HoverLink>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <ul className={`flex flex-col md:flex-row gap-2 md:gap-6`}>
+            {policyPages?.map((page) => (
+                <li key={page.id} className={`relative md:not-last:after:content-[''] md:after:absolute after:-right-3.5 after:w-0.5 not-last:after:h-full after:bg-white`}>
+                    <HoverLink variant="white">
+                        <Link
+                            href={page.href}
+                            title={page.name}
+                        >
+                            {page.name}
+                        </Link>
+                    </HoverLink>
+                </li>
+            ))}
+        </ul>
     )
 }

@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 
 export default function ProductInputs({ data }) {
-    const [qtyValue, setQtyValue] = useState(1);
+    const [qtyValue, setQtyValue] = useState('');
     const [productSize, setProductSize] = useState('');
     const [productColour, setProductColour] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -96,8 +96,8 @@ export default function ProductInputs({ data }) {
                         value={qtyValue}
                         type="number"
                         placeholder="1"
-                        min={1}
-                        max="10"
+                        min='1'
+                        max="11"
                         className={`rounded-4xl w-full md:max-w-40 text-black`}
                         onChange={(e) => setQtyValue(Number(e.target.value))}
                     />
@@ -121,13 +121,24 @@ export default function ProductInputs({ data }) {
                     onChange={setProductColour}
                 />
             </div>
+
+            {qtyValue > 10 ? (
+                <div className={`flex flex-col gap-2 text-sm pt-2 text-center text-pretty`}>
+                    <p>Order quantities over 10 can be placed through our Head Office:</p>
+                    <a href="mailto:secret_garden@gmail.com" className={`hover:underline active:underline`}>secret_garden@gmail.com</a>
+                    <a href="tel:021-4567890" className={`hover:underline active:underline`}>021-4567890</a>
+                </div>
+            ) : (
+                ''
+            )}
+
             {/* Add to Cart CTA */}
             <div className='col-span-2 md:col-span-3 pt-4'>
                 {!inStock ? (
                     <p className={`text-center p-2 text-red-400 font-bold`}>Out of Stock</p>
                 ) : (
                     <Button
-                        className={`uppercase`}
+                        className={`uppercase ${qtyValue > 10 ? 'opacity-50 pointer-events-none' : ''}`}
                         variant="sg_primary"
                         width='full'
                         size="sm"

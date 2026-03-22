@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
   const logoImg = data.brandLogos?.[0]?.logo.url;
 
   return (
-    <html lang="en" className={leagueSpartan.className}>
+    <html lang="en" className={leagueSpartan.className} >
       <head>
          <Script
           src={`https://www.googletagmanager.com/gtag/js?id=G-BYBRQ1J6EN`}

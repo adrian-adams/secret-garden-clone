@@ -123,7 +123,7 @@ export default function Hero({ heading, text, bg_desktop, bg_mobile, children })
                     />
                 )}
             </div>
-            <div className='gsap-hero-teaser bg-(--sg-olive) flex flex-col content-center gap-3 text-start rounded-4xl p-10 absolute bottom-0 left-0 m-4 md:m-8 bg-opacity-90 hover:skew-12' ref={teaserRef}>
+            <div className='gsap-hero-teaser bg-(--sg-olive) flex flex-col content-center gap-3 text-start rounded-4xl p-10 absolute bottom-10 md:bottom-0 left-0 m-4 md:m-8 bg-opacity-90 hover:skew-12' ref={teaserRef}>
                 <div className={`max-w-120 space-y-4`}>
                     <h1 className='gsap-content uppercase font-bold '>{heading}</h1>
                     <p className='gsap-content sg-font-large leading-snug'>{text}</p>

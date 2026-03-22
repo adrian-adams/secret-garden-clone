@@ -105,7 +105,7 @@ export default function Stores({ stores }) {
                 />
             )}
             <TabsList className={`w-full h-full p-10 text-left`} ref={listContainer} id='gsap-store-names'>
-                <h2 className={`sg-font-xlarge uppercase text-black text-left leading-tight pb-4 z-10`}>Come visit our store</h2>
+                <h2 className={`text-4xl uppercase text-black text-left leading-tight pb-4 z-10`}>Come visit our store</h2>
                 {stores.map((store, index) => {
                     return (
                         <TabsTrigger
